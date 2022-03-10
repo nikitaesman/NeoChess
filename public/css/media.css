@@ -1,0 +1,769 @@
+/* 1400 - 1500 */
+@media screen and (max-width: 1500px) {
+    /*-------Index-------*/
+
+    .main {
+        width: 1300px;
+    }
+
+    /*-------Chess-------*/
+
+    .game {
+        width: 1400px;
+    }
+}
+
+/* 1201 - 1400*/
+@media screen and (max-width: 1400px) {
+
+    .main {
+        width: 1100px;
+    }
+
+    .invites {
+        right: 20px;
+        transform: scale(0.9);
+    }
+
+    .volume__icon {
+        margin-right: 10px;
+    }
+
+    .volume {
+        justify-content: center;
+    }
+    /*-------Chess-------*/
+
+    .game {
+        width: 1200px;
+    }
+
+    .board {
+        transform: scale(0.9);
+    }
+
+    .info {
+
+        /*display: flex;*/
+        /*flex-direction: column;*/
+        /*justify-content: space-between;*/
+        /*height: 800px;*/
+        margin-top: 50px;
+        margin-left: 0px;
+    }
+
+    .info__wrap {
+        /*display: flex;*/
+        /*align-items: center;*/
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+
+   .info__wrap_top {
+       width: 340px;
+   }
+
+   .game-settings {
+       margin-left: -25px;
+       transform: scale(0.7);
+   }
+
+   .surrender {
+       margin: 84px 20px 0px;
+   }
+
+   .players {
+       transform: scale(0.7);
+   }
+
+   .info__wrap_bottom {
+       width: 340px;
+   }
+
+   .stat {
+       transform: scale(0.7);
+   }
+}
+
+
+/* 993 - 1200*/
+@media screen and (max-width: 1200px) {
+    .main {
+        width: 900px;
+    }
+
+    .container {
+        width: 700px;
+    }
+
+    .alerts {
+        width: 90vw;
+    }
+    .invites {
+        right: 10px;
+        transform: scale(0.8);
+    }
+    /*-------Chess-------*/
+
+    .game {
+        width: 930px;
+    }
+
+    .board {
+        position: absolute;
+        transform: scale(0.85);
+        margin-left: 60px;
+        margin-top: 35px;
+    }
+
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        height: 800px;
+    }
+
+    .info__wrap {
+
+        flex-direction: row;
+        width: 930px;
+    }
+
+    .info__wrap_top {
+        height: 60px;
+        margin-left: 235px;
+    }
+
+    .game-settings {
+        flex-direction: column;
+        margin: 710px 0px 0px -140px;
+        order: 2;
+        transform: scale(0.7);
+    }
+
+    .surrender {
+        margin: 40px;
+        transform: scale(0.8);
+    }
+
+    .players {
+        transform: scale(1);
+        margin-top: -20px;
+        order: 1;
+    }
+
+    .info__wrap_bottom {
+
+        align-items: flex-end;
+        width: 900px;
+
+    }
+
+    .palette {
+        margin: 190px 0px 135px -40px;
+        height: 200px;
+    }
+
+    .palette__elem {
+    }
+
+    .palette__wrap {
+        flex-direction: column;
+    }
+
+    .palette__item {
+        margin-bottom: 10px;
+    }
+
+    .palette__title {
+        display: none;
+    }
+
+    .moves {
+        transform: scale(0.6);
+        margin: 0px -780px 125px 795px;;
+    }
+
+    .stat {
+        margin-bottom: -20px;
+        margin-left: -300px;
+    }
+
+    .stat__title {
+        font-weight: 400;
+        margin-bottom: 5px;
+        margin-top: 0;
+        display: none;
+    }
+
+    .stat__figures {
+        flex-wrap: nowrap;
+        width: 575px;
+    }
+
+    .stat__figures_enemy {
+        flex-direction: row-reverse;
+    }
+
+    .stat__icon:nth-child(6) {
+        margin: 15px 15px 0px 0px;
+    }
+
+    .stat__icon:nth-child(12) {
+        margin: 15px 15px 0px 0px;
+    }
+
+    .stat__icon:nth-child(16) {
+        margin: 15px 15px 0px 0px;
+    }
+
+}
+
+/* 769 - 992*/
+@media screen and (max-width: 992px) {
+    .version {
+        display: none;
+    }
+
+    .main {
+        width: 720px;
+    }
+
+    .container {
+        width: 550px;
+    }
+
+    .nav__friends {
+        width: 49px;
+        height: 49px;
+
+    }
+
+    .nav__friends-text {
+        display: none;
+    }
+
+    .friends {
+        width: 550px;
+    }
+
+    .game-menu {
+        width: 600px;
+    }
+
+    .game-menu__players {
+        font-size: 35px;
+    }
+
+
+    .game-menu__settings-btn_clicked {
+        width: 630px;
+    }
+
+    .game-menu__settings {
+        width: 590px;
+    }
+
+    .invites {
+        top: 70px;
+        right: -30px;
+        transform: scale(0.7);
+    }
+
+    /*-------Chess-------*/
+
+    .game {
+        height: 100%;
+        width: 100%;
+        margin: 0;
+        padding: 0;
+        border-radius: 0;
+    }
+
+    .board {
+        top: 0;
+        margin: 0;
+    }
+
+    .info {
+        display: flex;
+        justify-content: space-between;
+        flex-direction: column;
+        align-items: center;
+        height: 100%;
+        width: 100%;
+        margin: 0;
+    }
+
+    .info__wrap_top {
+        flex-direction: column;
+        width: 100vw;
+        margin: 20px 0px 0px;
+    }
+
+    .players {
+        transform: scale(1);
+    }
+
+    .game-settings {
+        transform: scale(0.8);
+        flex-direction: row;
+        width: 125%;
+        margin: -15% 0px 0px 0px;
+    }
+
+    .settings {
+        margin-top: 60px;
+    }
+
+    .volume {
+        margin: 20px 0px 10px 0px;
+    }
+
+    .surrender {
+        transform: scale(1);
+        margin: 0px 0px 0px;
+    }
+
+    .info__wrap_bottom {
+        align-items: center;
+        flex-direction: column;
+    }
+
+    .info__ext {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        width: 80vw;
+        margin: 0px 0px -30px 0px;
+    }
+
+    .palette {
+        height: 40px;
+        margin: 0;
+    }
+
+    .palette__wrap {
+        flex-direction: row;
+    }
+
+    .moves {
+        transform: scale(0.6);
+        margin: 0px 0px 11px 0px;
+    }
+
+    .moves__title {
+        display: none;
+    }
+
+    .stat {
+        transform: scale(0.6);
+        margin: 0;
+    }
+}
+
+/* 577 - 768*/
+@media screen and (max-width: 768px) {
+    .main {
+        width: 520px;
+    }
+
+    .container {
+        width: 450px;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        width: 305px;
+        border: none;
+    }
+
+    .game-name {
+        border-bottom: 2px solid #808b9f70;
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+
+    }
+
+    .user__logo {
+        width: 45px;
+        height: 45px;
+        font-size: 28px;
+    }
+
+    .user__sign-out {
+        width: 45px;
+        height: 45px;
+        font-size: 10px;
+    }
+
+    .user__stat {
+        font-size: 11px;
+    }
+
+
+    .user__nickname {
+
+    }
+
+    .wrap {
+        margin-top: 50px;
+    }
+
+    .start__btn {
+        width: 450px;
+    }
+
+    .wrap__variables button {
+        width: 450px;
+    }
+
+    .wrap__history-btn {
+        width: 450px;
+    }
+
+    .wrap__list {
+        width: 450px;
+    }
+
+    .wrap__elem {
+        width: 420px;
+    }
+
+    .wrap__nickname {
+        font-size: 18px;
+    }
+
+    .wrap__elem .user__stat {
+        font-size: 11px;
+    }
+
+    .wrap__detail-stat {
+
+    }
+
+    .wrap__elem:hover .wrap__detail-stat {
+        width: 255px;
+    }
+
+    .friends {
+        width: 500px;
+    }
+
+    .game-menu {
+        width: 430px;
+        height: 670px;
+    }
+
+    .game-menu__players {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .game-menu__settings-btn_clicked {
+        width: 455px;
+        height: 420px;
+    }
+
+    .game-menu__settings {
+        flex-wrap: wrap;
+        justify-content: space-evenly;
+        width: 389px;
+    }
+
+    .game-menu__elem {
+        margin-top: 43px;
+    }
+
+    .game-menu__mark {
+        margin-bottom: 20px;
+    }
+
+    .invite {
+        width: 300px
+    }
+
+    /*-------Chess-------*/
+
+    .game {
+
+    }
+
+    .game-settings {
+        margin: -13% 0px 0px 0px;
+    }
+
+    .stat {
+
+    }
+
+    .stat__figures {
+        flex-wrap: wrap;
+        width: 220px;
+    }
+
+    .stat__figures_user {
+        padding: 0px 0px 0px 15px;
+    }
+
+    .stat__figures_enemy {
+        padding: 0px 0px 0px 15px;
+    }
+}
+/* 320 - 576 */
+@media screen and (max-width: 576px) {
+    .main {
+        width: 100%;
+    }
+
+    .container {
+        width: 90%;
+    }
+
+    .nav {
+        flex-wrap: wrap;
+        width: 230px;
+    }
+
+    .game-name {
+        margin-left: 10px;
+        font-size: 35px;
+    }
+
+
+    .start__btn {
+        width: 300px;
+        height: 101px;
+        padding: 0;
+        font-size: 30px;
+    }
+
+    .wrap__variables button {
+        padding: 15px;
+        width: 300px;
+    }
+
+    .wrap__history-btn {
+        width: 300px;
+        padding: 10px 0px;
+        font-size: 20px
+    }
+
+    .wrap__list {
+        width: 300px;
+    }
+
+    .wrap__elem {
+        width: 275px;
+    }
+
+
+    .wrap__players {
+        width: 140px;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+    }
+    .wrap__player {
+        width: 95px;
+    }
+
+    .wrap__nickname {
+        font-size: 15px;
+    }
+
+    .wrap__versus {
+        font-size: 15px;
+    }
+
+    .wrap__elem .user__stat {
+        display: none;
+        font-size: 11px;
+    }
+
+    .wrap__detail-stat {
+
+    }
+
+    .wrap__elem:hover .wrap__detail-stat {
+        width: 143px;
+    }
+
+    .wrap__player-name {
+        font-size: 14px;
+    }
+
+    .wrap__overall {
+        font-size: 14px;
+    }
+
+    .wrap__column {
+        border-left: 0px solid #000;
+        margin-right: 10px;
+    }
+
+
+    .wrap__cell {
+        font-size: 14px;
+        margin-top: 2px;
+    }
+
+    .wrap__elem:hover .wrap__time {
+        display: none;
+    }
+
+    .wrap__text {
+        font-size: 12px;
+    }
+
+    .wrap__icon {
+        width: 14px;
+        margin-right: 5px;
+        margin-left: 10px;
+    }
+
+    .game-menu {
+        width: 80vw;
+        height: 620px;
+    }
+
+    .game-menu__settings-btn_clicked {
+        width: 78vw;
+        height: 420px;
+    }
+
+    .game-menu__players {
+        flex-direction: column;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+
+    .game-menu__nickname {
+        font-size: 35px;
+    }
+
+    .game-menu__vs {
+        width: 65px;
+    }
+
+
+    .game-menu__settings {
+        flex-wrap: wrap;
+        justify-content: center;
+        width: 220px;
+        margin: 0px auto;
+    }
+
+    .game-menu__elem {
+        margin-top: 23px;
+        width: 85px;
+        height: 85px;
+        padding: 5px;
+        margin: 5%;
+    }
+
+    .game-menu__elem svg {
+        width: 30px;
+    }
+
+    .game-menu__duration {
+        font-size: 14px;
+        margin-top: 0px;
+    }
+
+    .game-menu__mark {
+        margin-bottom: 10px;
+        font-size: 10px;
+    }
+
+    .friends {
+        width: 100%;
+    }
+
+    .friends__select {
+        font-size: 16px;
+    }
+
+    .login {
+        width: 70vw;
+    }
+
+    .alerts {
+        font-size: 15px;
+        text-align: center;
+    }
+    .online {
+        left: -270px;
+        width: 270px;
+    }
+    .online-collapse {
+        left: 270px;
+    }
+    .online__opened {
+        left: 0px;
+    }
+
+    .invites {
+        right: -30px;
+        transform: scale(0.7);
+    }
+
+    .invite {
+        width: 280px
+    }
+
+    /*-------Chess-------*/
+
+    .info__wrap_top {
+        transform: scale(0.7);
+    }
+
+    .game-settings {
+        transform: scale(0.65);
+        margin: -15% 0px 0px 0px;
+    }
+
+    .settings {
+        margin-top: 0;
+    }
+
+    .volume {
+        margin: 20px 0px 40px 0px;
+    }
+
+    .info__wrap_bottom {
+        height: 145px;
+    }
+
+    .info__ext  {
+        display: block;
+        align-items: center;
+    }
+
+    .palette {
+        transform: scale(0.7);
+    }
+
+    .moves {
+
+        margin: -15px 0px 30px 0px;
+
+        transform: scale(0.5);
+    }
+
+    .moves__numbers {
+        margin-top: 0;
+    }
+
+    .moves__title {
+        display: none;
+    }
+
+    .stat {
+        margin: -15px 0px 0px 0px;
+    }
+
+
+}

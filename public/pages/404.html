@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>NeoChess♜</title>
+	<!-- Favicon -->
+	<!-- <link rel="icon" href="img/logo.png" type="image/x-icon">
+ 	<link rel="shortcut icon" href="img/logo.png" type="image/x-icon"> -->
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+	<!-- Styles -->
+	<style type="text/css">
+		@font-face {
+			font-family: 'figures';
+			src:  url('../fonts/figures_icons/figures.eot');
+			src:  url('../fonts/figures_icons/figures.eot') format('embedded-opentype'),
+			url('../fonts/figures_icons/figures.ttf') format('truetype'),
+			url('../fonts/figures_icons/figures.woff') format('woff');
+
+			font-weight: normal;
+			font-style: normal;
+			font-display: block;
+		}
+
+		i {
+			/* use !important to prevent issues with browser extensions that change fonts */
+			font-family: 'figures' !important;
+			speak: never;
+			font-style: normal;
+			font-weight: normal;
+			font-variant: normal;
+			text-transform: none;
+			line-height: 1;
+
+			/* Better Font Rendering =========== */
+			-webkit-font-smoothing: antialiased;
+			-moz-osx-font-smoothing: grayscale;
+		}
+
+		.icon-bishop:before {
+		  content: "\f004";
+		}
+		.icon-king:before {
+		  content: "\f006";
+		}
+		.icon-knight:before {
+		  content: "\f003";
+		}
+		.icon-pawn:before {
+		  content: "\f001";
+		}
+		.icon-queen:before {
+		  content: "\f005";
+		}
+		.icon-rook:before {
+		  content: "\f002";
+		}
+
+		body {
+			font-family: 'Rubik', sans-serif;
+			color: #414246;
+			background: #DCDFE8;
+			letter-spacing: 0.15em;
+			font-size: 18px;
+			
+		}
+
+		header {
+			display: flex;
+			justify-content: center;
+			padding: 10px 0px 0px;
+		}
+
+		.game-name {
+			display: flex;
+			align-items: center;
+			font-weight: 700;
+			font-size: 55px;
+			background-color: #745FF2;
+			text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
+			color: transparent;
+		  -webkit-background-clip: text;
+		     -moz-background-clip: text;
+		          background-clip: text;
+		}
+
+		.game-name span {
+			background-color: #C590EF;
+			text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
+			color: transparent;
+		  -webkit-background-clip: text;
+		     -moz-background-clip: text;
+		          background-clip: text;
+		}
+
+		.game-name i {
+			background-color: #34258C90;
+			text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
+			color: transparent;
+		  -webkit-background-clip: text;
+		     -moz-background-clip: text;
+		          background-clip: text;
+		}
+
+		.offer {
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+			width: 1000px;
+			margin: 100px auto 0px;
+			
+		}
+
+		.offer__text {
+			
+		}
+
+		.offer__title {
+			font-size: 90px;
+			font-weight: 700;
+			margin-bottom: 80px;
+		}
+
+		.offer__info {
+			font-size: 22px;
+			width: 400px;
+			margin-bottom: 40px;
+		}
+
+		.offer__err-code {
+			font-weight: 700;
+			margin-bottom: 50px;
+		}
+
+		.offer__figure {
+			animation-duration: 3s;
+  			animation-name: figureRotate;
+  			animation-iteration-count: infinite;
+ 			animation-direction: alternate;
+		}
+
+		.offer__figure i{
+			font-size: 700px;
+			background-color: #34258C90;
+			text-shadow: 0px 10px 10px rgba(255,255,255,0.5);
+			color: transparent;
+		  -webkit-background-clip: text;
+		     -moz-background-clip: text;
+		          background-clip: text;
+		    
+		}
+
+		@keyframes figureRotate {
+			from {
+				transform: rotate(20deg);
+			}
+
+			to {
+				transform: rotate(-20deg);
+			}
+		}
+
+		/* 1200 - 1400 */
+		@media screen and (max-width: 1400px) {
+
+		}
+
+		/* 992 - 1200 */
+		@media screen and (max-width: 1200px) {
+			.offer {
+				width: 820px;
+			}
+		}
+
+		/* 768 - 992	 */
+		@media screen and (max-width: 992px) {
+			.offer {
+				width: 700px;
+			}
+
+			.offer__figure i {
+				font-size: 500px;
+			}
+
+		}
+
+		/* 576 - 768	 */
+		@media screen and (max-width: 768px) {
+			.offer {
+				flex-direction: column;
+				width: 500px;
+				margin-top: 50px;
+			}
+
+			.offer__title {
+				margin-bottom: 50px;
+			}
+
+			.offer__figure i {
+				font-size: 400px;
+			}
+
+		}
+
+		/* 320 - 576	 */
+		@media screen and (max-width: 576px) {
+
+			.game-name {
+				font-size: 50px;
+			}
+
+			.offer {
+				flex-direction: column;
+				width: 300px;
+				padding: 10px;
+				margin: 50px;
+				box-sizing: border-box;
+			}
+
+			.offer__title {
+				font-size: 72px;
+				margin-bottom: 30px;
+			}
+
+			.offer__info {
+				font-size: 18px;
+			}
+
+			.offer__figure i {
+				font-size: 400px;
+			}
+
+		}
+	</style>
+</head>
+<body>
+	<header>
+		<div class="game-name">
+			<span>Neo</span>Chess <i class="icon-rook"></i>
+		</div>
+	</header>
+	<section>
+		<div class="offer">
+			<div class="offer__text">
+				<div class="offer__title">
+					Oops..!
+				</div>
+				<div class="offer__info">
+					We can't seem to find the page you're looking for
+				</div>
+				<div class="offer__err-code">
+					Error code: 404
+				</div>
+				<a class="offer__main-page" href="../">
+					Go to main page
+				</a>
+			</div>
+			<div class="offer__figure">
+				<i class="icon-knight"></i>
+			</div>
+		</div>
+	</section>
+</body>
+</html>

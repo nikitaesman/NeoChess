@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoChess♜</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+
+    <link rel="stylesheet" type="text/css" href="../css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/chess.css">
+    <!-- JavaScript -->
+    <!--    <script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>-->
+    <!--    <script type="text/javascript" src="js/jquery.arcticmodal-0.3.min.js"></script>-->
+    <!--    <script type="text/javascript" src="js/main.js"></script>-->
+    <!--    Styles-->
+    <style type="text/css">
+        body {
+           display: block;
+            background: #DCDFE8;
+            overflow: hidden;
+
+        }
+        .game-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 55px;
+            background-color: #745FF2;
+            text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
+            color: transparent;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            margin-top: 20px;
+        }
+
+        .activated__title {
+            text-align: center;
+            font-weight: 700;
+            font-size: 45px;
+            margin: 50px auto 0px;
+        }
+
+        .offer__figure {
+            display: flex;
+            justify-content: center;
+            animation-duration: 3s;
+            animation-name: figureRotate;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+            margin-top: 60px;
+
+        }
+
+        .icon-knight_big{
+            font-size: 500px;
+            background-color: #34258C90;
+            text-shadow: 0px 10px 10px rgba(255,255,255,0.5);
+            color: transparent;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+
+        }
+                
+        .offer__wrap {
+            position: relative;
+            animation-duration: 3s;
+            animation-name: figureCircleRotate;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+        
+        .offer__wrap i {
+
+            position: absolute;
+            top: -40px;
+            right: 150px;
+            width: 130%;
+            height: 130%;
+            transform: rotate(calc(60deg * var(--i)));
+            font-size: 45px;
+            animation-duration: 3s;
+            animation-name: figureCircleRotate;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+
+        }
+
+        .offer__wrap i:before {
+            background-color: #745FF270;
+            text-shadow: 0px 10px 10px rgba(255,255,255,0.5);
+            color: transparent;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+        }
+
+        @keyframes figureRotate {
+            from {
+                transform: rotate(20deg);
+                filter: hue-rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-20deg);
+                filter: hue-rotate(40deg);
+            }
+        }
+
+        @keyframes figureCircleRotate {
+            from {
+                transform: rotate(calc(60deg * var(--i))) translate(0px);
+            }
+
+            to {
+                transform: rotate(calc(60deg * var(--i))) translate(360px);
+            }
+        }
+
+        /* 992 - 1200 */
+        @media screen and (max-width: 1200px) {
+            body {
+                width: 100%;
+            }
+
+            .activated__title {
+                width: 800px;
+            }
+
+            @keyframes figureCircleRotate {
+                from {
+                    transform: rotate(calc(60deg * var(--i))) translate(0px);
+                }
+
+                to {
+                    transform: rotate(calc(60deg * var(--i))) translate(270px);
+                }
+            }
+        }
+
+        /* 769 - 992 */
+        @media screen and (max-width: 992px) {
+            body {
+                width: 100%;
+            }
+
+            .activated__title {
+                width: 700px;
+            }
+
+            @keyframes figureCircleRotate {
+                from {
+                    transform: rotate(calc(60deg * var(--i))) translate(0px);
+                }
+
+                to {
+                    transform: rotate(calc(60deg * var(--i))) translate(180px);
+                }
+            }
+
+            .offer__figure {
+                margin-top: 100px;
+            }
+
+            .icon-knight_big {
+                font-size: 400px;
+            }
+
+            .offer__wrap i {
+                right: 130px;
+            }
+        }
+
+        /* 576 - 768*/
+        @media screen and (max-width: 768px) {
+            .activated__title {
+                width: 500px;
+                font-size: 35px;
+            }
+
+            @keyframes figureCircleRotate {
+                from {
+                    transform: rotate(calc(60deg * var(--i))) translate(0px);
+                }
+
+                to {
+                    transform: rotate(calc(60deg * var(--i))) translate(150px);
+                }
+            }
+
+            .offer__figure {
+                margin-top: 100px;
+            }
+
+            .icon-knight_big {
+                font-size: 300px;
+            }
+
+            .offer__wrap i {
+                top: -15px;
+                right: 100px;
+            }
+        }
+
+        /* 320 - 576*/
+        @media screen and (max-width: 576px) {
+            .game-name {
+                font-size: 45px;
+            }
+
+            .activated__title {
+                width: 300px;
+                font-size: 30px;
+            }
+
+            @keyframes figureCircleRotate {
+                from {
+                    transform: rotate(calc(60deg * var(--i))) translate(30px);
+                }
+
+                to {
+                    transform: rotate(calc(60deg * var(--i))) translate(90px);
+                }
+            }
+
+            .offer__figure {
+                margin-top: 100px;
+            }
+
+            .icon-knight_big {
+                font-size: 200px;
+            }
+
+            .offer__wrap i {
+                font-size: 30px;
+                top: -15px;
+                right: 70px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="game-name">
+            <span>Neo</span>Chess <i class="icon-rook"></i>
+        </div>
+    </header>
+    <section class="activated">
+        <div class="activated__title">
+            Ваш аккаунт был успешно активирован
+        </div>
+    </section>
+    <div class="offer__figure">
+        <i class="icon-knight_big icon-knight"></i>
+        <div class="offer__wrap">
+            <i class="icon-knight" style="--i:1;"></i>
+            <i class="icon-rook" style="--i:2;"></i>
+            <i class="icon-bishop" style="--i:3;"></i>
+            <i class="icon-king" style="--i:4;"></i>
+            <i class="icon-queen" style="--i:5;"></i>
+            <i class="icon-pawn" style="--i:6;"></i>
+        </div>
+    </div>
+</body>
+</html>

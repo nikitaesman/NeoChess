@@ -1,0 +1,341 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NeoChess♜</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+
+    <link rel="stylesheet" type="text/css" href="../css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/chess.css">
+    <!-- JavaScript -->
+    <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+<!--    <script type="text/javascript" src="js/jquery.arcticmodal-0.3.min.js"></script>-->
+    <script type="text/javascript" src="../js/recovery.js"></script>
+    <!--    Styles-->
+    <style type="text/css">
+        body {
+            display: block;
+            background: #DCDFE8;
+        }
+
+        /*Preloader*/
+
+        #page-preloader {
+            position: fixed;
+            left: 0;
+            top: 0;
+            right: 0;
+            bottom: 0;
+            background: #EBEEF6;
+            z-index: 100500;
+        }
+
+        .spinner {
+            position: absolute;
+            left: 50%;
+            top: 50%;
+            margin-top: -40px;
+            margin-left: -40px;
+        }
+
+        .lds-roller {
+            display: inline-block;
+            position: relative;
+            width: 80px;
+            height: 80px;
+            background: url("../img/icons/favicon.ico") center center no-repeat;
+            background-size: 40%;
+        }
+        .lds-roller div {
+            animation: lds-roller 1.2s cubic-bezier(0.5, 0, 0.5, 1) infinite;
+            transform-origin: 40px 40px;
+        }
+        .lds-roller div:after {
+            content: " ";
+            display: block;
+            position: absolute;
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            background: #6A5AE8;
+            margin: -4px 0 0 -4px;
+        }
+        .lds-roller div:nth-child(1) {
+            animation-delay: -0.036s;
+        }
+        .lds-roller div:nth-child(1):after {
+            top: 63px;
+            left: 63px;
+        }
+        .lds-roller div:nth-child(2) {
+            animation-delay: -0.072s;
+        }
+        .lds-roller div:nth-child(2):after {
+            top: 68px;
+            left: 56px;
+        }
+        .lds-roller div:nth-child(3) {
+            animation-delay: -0.108s;
+        }
+        .lds-roller div:nth-child(3):after {
+            top: 71px;
+            left: 48px;
+        }
+        .lds-roller div:nth-child(4) {
+            animation-delay: -0.144s;
+        }
+        .lds-roller div:nth-child(4):after {
+            top: 72px;
+            left: 40px;
+        }
+        .lds-roller div:nth-child(5) {
+            animation-delay: -0.18s;
+        }
+        .lds-roller div:nth-child(5):after {
+            top: 71px;
+            left: 32px;
+        }
+        .lds-roller div:nth-child(6) {
+            animation-delay: -0.216s;
+        }
+        .lds-roller div:nth-child(6):after {
+            top: 68px;
+            left: 24px;
+        }
+        .lds-roller div:nth-child(7) {
+            animation-delay: -0.252s;
+        }
+        .lds-roller div:nth-child(7):after {
+            top: 63px;
+            left: 17px;
+        }
+        .lds-roller div:nth-child(8) {
+            animation-delay: -0.288s;
+        }
+        .lds-roller div:nth-child(8):after {
+            top: 56px;
+            left: 12px;
+        }
+        @keyframes lds-roller {
+            0% {
+                transform: rotate(0deg);
+            }
+            100% {
+                transform: rotate(360deg);
+            }
+        }
+
+        .border__red {
+            border: 2px solid #DD534790 !important;
+        }
+
+        .border__green {
+            border: 2px solid #19A15F90 !important;
+        }
+
+        .game-name {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            font-size: 55px;
+            background-color: #745FF2;
+            text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
+            color: transparent;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+            margin-top: 20px;
+        }
+
+        .recovery__title{
+            font-weight: 700;
+            font-size: 45px;
+            margin-top: 50px;
+        }
+
+        .recovery {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+
+        }
+
+        .recovery__wrap {
+            display: flex;
+            align-items: center;
+
+        }
+
+        .recovery__form {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-right: 80px;
+        }
+
+        .recovery__text {
+            margin-bottom: 30px;
+        }
+
+        input {
+            font-family: 'Rubik', sans-serif;
+            font-size: 12px;
+            background: linear-gradient(0deg, #E6EEF8, #E6EEF8), #CFD8DC;
+            box-shadow: -3px -3px 12px #FFFFFF80, 5px 5px 12px rgba(187, 195, 206, 0.6),
+            inset -2px -2px 12px rgba(255, 255, 255, 0.0),
+            inset 3px 3px 12px rgba(187, 195, 206, 0.0);
+            border-radius: 16px;
+            padding: 16px;
+            width: 250px;
+            height: 46px;
+            border: none;
+            outline: none;
+            margin-bottom: 20px;
+            transition: .5s;
+            box-sizing: border-box;
+        }
+
+        input:focus {
+            box-shadow: -3px -3px 12px #FFFFFF00, 5px 5px 12px rgba(187, 195, 206, 0.0),
+            inset -2px -2px 12px rgba(255, 255, 255, 0.7),
+            inset 3px 3px 12px rgba(187, 195, 206, 0.6);
+            transition: 0.5s;
+            height: 46px;
+        }
+
+        .login__button {
+            width: 180px;
+        }
+
+        .offer__figure {
+
+            animation-duration: 3s;
+            animation-name: figureRotate;
+            animation-iteration-count: infinite;
+            animation-direction: alternate;
+        }
+
+        .offer__figure i{
+            font-size: 650px;
+            background-color: #34258C90;
+            text-shadow: 0px 10px 10px rgba(255,255,255,0.5);
+            color: transparent;
+            -webkit-background-clip: text;
+            -moz-background-clip: text;
+            background-clip: text;
+
+        }
+
+        @keyframes figureRotate {
+            from {
+                transform: rotate(20deg);
+                filter: hue-rotate(0deg);
+            }
+
+            to {
+                transform: rotate(-20deg);
+                filter: hue-rotate(40deg);
+            }
+        }
+
+        /* 769 - 992*/
+        @media screen and (max-width: 992px) {
+            .recovery {
+                margin: 0px auto;
+            }
+
+            .recovery__title {
+                text-align: center;
+                width: 600px;
+            }
+            
+            .offer__figure i {
+                font-size: 480px;
+            }
+        }
+
+        /* 576 - 768*/
+        @media screen and (max-width: 768px) {
+            .recovery__title {
+                width: 500px;
+            }
+
+            .recovery__wrap {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            .recovery__form {
+                margin: 30px 0px;
+            }
+        }
+
+        /* 320 - 576 */
+        @media screen and (max-width: 576px) {
+            .game-name {
+                font-size: 45px;
+            }
+
+            .recovery__title {
+                width: 280px;
+                font-size: 28px;
+                margin-top: 20px;
+            }
+
+            .recovery__form {
+                margin: 20px 0px;
+            }
+
+            .offer__figure i {
+                font-size: 300px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div id="page-preloader">
+        <div class="lds-roller spinner" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+    </div>
+    <header>
+        <div class="game-name">
+            <span>Neo</span>Chess <i class="icon-rook"></i>
+        </div>
+    </header>
+    <section class="recovery">
+        <div class="recovery__title">Упс... похоже вы забыли пароль</div>
+        <div class="recovery__wrap">
+            <form class="recovery__form" id="recovery">
+                <div class="recovery__text">
+                    Восстановление аккаунта
+                </div>
+                <input type="password"
+                       id="recPassword1"
+                       name="password"
+                       placeholder="New password"
+                       autocomplete="off"
+                       required>
+
+                <input type="password"
+                       id="recPassword2"
+                       name="password"
+                       placeholder="Confirm password"
+                       autocomplete="off"
+                       required>
+                <button type="submit" class="login__button">Reset password</button>
+            </form>
+            <div class="offer__figure">
+                <i class="icon-knight"></i>
+            </div>
+        </div>
+    </section>
+</body>
+</html>

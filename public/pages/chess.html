@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>Chess Game</title>
+	<!-- Favicon -->
+	<link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+	<link rel="shortcut icon" href="../img/icons/favicon.ico" type="image/x-icon">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+	<!--  -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+	<!-- CSS -->
+	<link rel="stylesheet" type="text/css" href="../css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="../css/chess.css">
+	<link rel="stylesheet" type="text/css" href="../css/media.css">
+	<!-- JavaScript -->
+	<script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="../js/chess.js"></script>
+	
+</head>
+<body>
+	<div id="page-preloader">
+		<div class="lds-roller spinner" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+	<section class="game">
+		<div class="board">
+			<div class="board__row">
+				<div class="board__cell board__cell_white" data-cord="1.1"></div>
+				<div class="board__cell board__cell_black" data-cord="2.1"></div>
+				<div class="board__cell board__cell_white" data-cord="3.1"></div>
+				<div class="board__cell board__cell_black" data-cord="4.1"></div>
+				<div class="board__cell board__cell_white" data-cord="5.1"></div>
+				<div class="board__cell board__cell_black" data-cord="6.1"></div>
+				<div class="board__cell board__cell_white" data-cord="7.1"></div>
+				<div class="board__cell board__cell_black" data-cord="8.1"></div>
+			</div>
+			<div class="board__row">
+				<div class="board__cell board__cell_black" data-cord="1.2"></div>
+				<div class="board__cell board__cell_white" data-cord="2.2"></div>
+				<div class="board__cell board__cell_black" data-cord="3.2"></div>
+				<div class="board__cell board__cell_white" data-cord="4.2"></div>
+				<div class="board__cell board__cell_black" data-cord="5.2"></div>
+				<div class="board__cell board__cell_white" data-cord="6.2"></div>
+				<div class="board__cell board__cell_black" data-cord="7.2"></div>
+				<div class="board__cell board__cell_white" data-cord="8.2"></div>
+			</div>
+			<div class="board__row">
+				<div class="board__cell board__cell_white" data-cord="1.3"></div>
+				<div class="board__cell board__cell_black" data-cord="2.3"></div>
+				<div class="board__cell board__cell_white" data-cord="3.3"></div>
+				<div class="board__cell board__cell_black" data-cord="4.3"></div>
+				<div class="board__cell board__cell_white" data-cord="5.3"></div>
+				<div class="board__cell board__cell_black" data-cord="6.3"></div>
+				<div class="board__cell board__cell_white" data-cord="7.3"></div>
+				<div class="board__cell board__cell_black" data-cord="8.3"></div>
+			</div>
+			<div class="board__row">
+				<div class="board__cell board__cell_black" data-cord="1.4"></div>
+				<div class="board__cell board__cell_white" data-cord="2.4"></div>
+				<div class="board__cell board__cell_black" data-cord="3.4"></div>
+				<div class="board__cell board__cell_white" data-cord="4.4"></div>
+				<div class="board__cell board__cell_black" data-cord="5.4"></div>
+				<div class="board__cell board__cell_white" data-cord="6.4"></div>
+				<div class="board__cell board__cell_black" data-cord="7.4"></div>
+				<div class="board__cell board__cell_white" data-cord="8.4"></div>
+			</div>
+			<div class="board__row">
+				<div class="board__cell board__cell_white" data-cord="1.5"></div>
+				<div class="board__cell board__cell_black" data-cord="2.5"></div>
+				<div class="board__cell board__cell_white" data-cord="3.5"></div>
+				<div class="board__cell board__cell_black" data-cord="4.5"></div>
+				<div class="board__cell board__cell_white" data-cord="5.5"></div>
+				<div class="board__cell board__cell_black" data-cord="6.5"></div>
+				<div class="board__cell board__cell_white" data-cord="7.5"></div>
+				<div class="board__cell board__cell_black" data-cord="8.5"></div>
+			</div>
+			<div class="board__row">
+				<div class="board__cell board__cell_black" data-cord="1.6"></div>
+				<div class="board__cell board__cell_white" data-cord="2.6"></div>
+				<div class="board__cell board__cell_black" data-cord="3.6"></div>
+				<div class="board__cell board__cell_white" data-cord="4.6"></div>
+				<div class="board__cell board__cell_black" data-cord="5.6"></div>
+				<div class="board__cell board__cell_white" data-cord="6.6"></div>
+				<div class="board__cell board__cell_black" data-cord="7.6"></div>
+				<div class="board__cell board__cell_white" data-cord="8.6"></div>
+			</div>
+			<div class="board__row">
+				<div class="board__cell board__cell_white" data-cord="1.7"></div>
+				<div class="board__cell board__cell_black" data-cord="2.7"></div>
+				<div class="board__cell board__cell_white" data-cord="3.7"></div>
+				<div class="board__cell board__cell_black" data-cord="4.7"></div>
+				<div class="board__cell board__cell_white" data-cord="5.7"></div>
+				<div class="board__cell board__cell_black" data-cord="6.7"></div>
+				<div class="board__cell board__cell_white" data-cord="7.7"></div>
+				<div class="board__cell board__cell_black" data-cord="8.7"></div>
+			</div>
+			<div class="board__row">
+				<div class="board__cell board__cell_black" data-cord="1.8"></div>
+				<div class="board__cell board__cell_white" data-cord="2.8"></div>
+				<div class="board__cell board__cell_black" data-cord="3.8"></div>
+				<div class="board__cell board__cell_white" data-cord="4.8"></div>
+				<div class="board__cell board__cell_black" data-cord="5.8"></div>
+				<div class="board__cell board__cell_white" data-cord="6.8"></div>
+				<div class="board__cell board__cell_black" data-cord="7.8"></div>
+				<div class="board__cell board__cell_white" data-cord="8.8"></div>
+			</div>
+
+			<div class="figures">
+				
+			</div>
+			<div class="grid">
+				<div class="grid__row">
+					<div class="grid__cell" data-cord="1.1">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="2.1">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="3.1">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="4.1">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="5.1">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="6.1">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="7.1">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="8.1">
+						<div class="grid__inner"></div>
+					</div>
+				</div>
+				<div class="grid__row">
+					<div class="grid__cell" data-cord="1.2">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="2.2">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="3.2">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="4.2">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="5.2">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="6.2">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="7.2">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="8.2">
+						<div class="grid__inner"></div>
+					</div>
+				</div>
+				<div class="grid__row">
+					<div class="grid__cell" data-cord="1.3">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="2.3">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="3.3">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="4.3">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="5.3">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="6.3">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="7.3">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="8.3">
+						<div class="grid__inner"></div>
+					</div>
+				</div>
+				<div class="grid__row">
+					<div class="grid__cell" data-cord="1.4">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="2.4">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="3.4">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="4.4">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="5.4">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="6.4">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="7.4">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="8.4">
+						<div class="grid__inner"></div>
+					</div>
+				</div>
+				<div class="grid__row">
+					<div class="grid__cell" data-cord="1.5">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="2.5">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="3.5">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="4.5">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="5.5">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="6.5">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="7.5">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="8.5">
+						<div class="grid__inner"></div>
+					</div>
+				</div>
+				<div class="grid__row">
+					<div class="grid__cell" data-cord="1.6">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="2.6">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="3.6">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="4.6">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="5.6">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="6.6">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="7.6">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="8.6">
+						<div class="grid__inner"></div>
+					</div>
+				</div>
+				<div class="grid__row">
+					<div class="grid__cell" data-cord="1.7">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="2.7">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="3.7">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="4.7">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="5.7">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="6.7">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="7.7">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="8.7">
+						<div class="grid__inner"></div>
+					</div>
+				</div>
+				<div class="grid__row">
+					<div class="grid__cell" data-cord="1.8">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="2.8">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="3.8">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="4.8">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="5.8">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="6.8">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="7.8">
+						<div class="grid__inner"></div>
+					</div>
+					<div class="grid__cell" data-cord="8.8">
+						<div class="grid__inner"></div>
+					</div>
+				</div>
+			</div>
+			<div class="inGameModal">
+				<div class="transform-pawn">
+					<h4 class="transform-pawn__title players__name">Выберите фигуру для замены</h4>
+					<div class="transform-pawn__select">
+						<div class="transform-pawn__item" data-figure="queen">
+							<i class="icon-queen white__figures"></i>
+						</div>
+						<div class="transform-pawn__item" data-figure="bishop">
+							<i class="icon-bishop white__figures"></i>
+						</div>
+						<div class="transform-pawn__item" data-figure="rook">
+							<i class="icon-rook white__figures"></i>
+						</div>
+						<div class="transform-pawn__item" data-figure="knight">
+							<i class="icon-knight white__figures"></i>
+						</div>
+					</div>
+				</div>
+			</div>
+			<div class="symbol__num">
+				<div class="num__item"><p>8</p></div>
+				<div class="num__item"><p>7</p></div>
+				<div class="num__item"><p>6</p></div>
+				<div class="num__item"><p>5</p></div>
+				<div class="num__item"><p>4</p></div>
+				<div class="num__item"><p>3</p></div>
+				<div class="num__item"><p>2</p></div>
+				<div class="num__item"><p>1</p></div>
+			</div>
+			<div class="symbol__abc">
+				<div class="abc__item"><p>A</p></div>
+				<div class="abc__item"><p>B</p></div>
+				<div class="abc__item"><p>C</p></div>
+				<div class="abc__item"><p>D</p></div>
+				<div class="abc__item"><p>E</p></div>
+				<div class="abc__item"><p>F</p></div>
+				<div class="abc__item"><p>G</p></div>
+				<div class="abc__item"><p>H</p></div>
+			</div>
+		</div>
+		<div class="info">
+			<div class="info__wrap info__wrap_top">
+				<div class="game-settings">
+					<div class="timer">
+						<div class="timer__title">
+							Match time
+						</div>
+						<div class="timer__item">
+							<svg id="svg" viewPort="0 0 100 100" version="1.1" xmlns="http://www.w3.org/2000/svg">
+								<circle r="63" cx="66" cy="66" fill="transparent" stroke-dasharray="395.8"
+										stroke-dashoffset="0"></circle>
+								<circle id="bar" r="63" cx="66" cy="66" fill="transparent" stroke-dasharray="395.8"
+										stroke-dashoffset="0"></circle>
+
+							</svg>
+							<div class="timer__count">
+								<div class="lds-roller spinner" style="position: inherit">
+									<div></div>
+									<div></div>
+									<div></div>
+									<div></div>
+									<div></div>
+									<div></div>
+									<div></div>
+									<div></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="settings">
+						<div class="volume">
+							<div class="volume__icon">
+								<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Pro 6.0.0-beta1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) --><path d="M333.2 34.84c-4.201-1.896-8.729-2.841-13.16-2.841c-7.697 0-15.29 2.784-21.27 8.1L163.8 160H80c-26.51 0-48 21.49-48 47.1v95.1c0 26.51 21.49 47.1 48 47.1h83.84l134.9 119.9C304.7 477.2 312.3 480 320 480c4.438 0 8.959-.9312 13.16-2.837C344.7 472 352 460.6 352 448V64C352 51.41 344.7 39.1 333.2 34.84zM304 412.4L182.1 304H80v-95.1h102.1L304 99.64V412.4zM444.6 181.9c-4.471-3.629-9.857-5.401-15.2-5.401c-6.949 0-13.83 2.994-18.55 8.807c-8.406 10.25-6.906 25.37 3.375 33.78C425.5 228.4 432 241.8 432 256s-6.5 27.62-17.81 36.87c-10.28 8.406-11.78 23.53-3.375 33.78c4.719 5.812 11.62 8.812 18.56 8.812c5.344 0 10.75-1.781 15.19-5.406C467.1 311.6 480 284.7 480 256C480 227.3 467.1 200.4 444.6 181.9zM505.1 108c-4.455-3.637-9.842-5.417-15.2-5.417c-6.934 0-13.82 2.979-18.58 8.761c-8.406 10.25-6.906 25.37 3.344 33.78C508.6 172.9 528 213.3 528 256c0 42.69-19.44 83.09-53.31 110.9c-10.25 8.406-11.75 23.53-3.344 33.78c4.75 5.781 11.62 8.781 18.56 8.781c5.375 0 10.75-1.781 15.22-5.437C550.2 367.1 576 313.1 576 256C576 198.9 550.2 144.9 505.1 108z"/></svg>
+							</div>
+							<output class="volume__value" for="volume__range">50</output>
+							<input type="range" class="volume__range" min="0" max="100" value="50" step="5">
+						</div>
+						<div class="surrender">
+							<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+								<!--! Font Awesome Pro 6.0.0-beta1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+								<defs>
+									<style>.fa-secondary {
+										opacity: .4
+									}</style>
+								</defs>
+								<path class="fa-primary"
+									  d="M32 0C14.25 0 0 14.25 0 32v464C0 504.8 7.25 512 16 512h32C56.75 512 64 504.8 64 496V32C64 14.25 49.75 0 32 0z"/>
+								<path class="fa-secondary"
+									  d="M512 30.73v301.4c0 12.25-7.947 23.75-20.63 28.75c-43.95 17.12-80.05 23.09-111.1 23.09c-73.63 0-124.9-31.78-198.6-31.78c-32.97 0-70.91 7.057-116.8 25.51V32c0-2.695-.9023-5.086-1.521-7.586c48.34-17.21 92.79-24.11 122.7-24.11c69.07 .0078 103.9 31.87 163.9 31.87c28.28 0 62.14-7.084 107.8-27.94C463.3 1.35 469.9 0 476.3 0C495.3 0 512 11.1 512 30.73z"/>
+							</svg>
+							<div class="surrender__text">Surrender</div>
+						</div>
+					</div>
+					<div class="game-mode">
+						<div class="game-mode__title">
+							Match mode
+						</div>
+						<div>
+							<div class="game-menu__icon game-menu__icon_timer">
+								<!-- Timer -->
+								<svg viewBox="0 0 512 512">
+									<path d="M256 16c-13.25 0-24 10.75-24 24v80C232 133.3 242.8 144 256 144s24-10.75 24-24V65.5C374.6 77.34 448 158.3 448 256c0 105.9-86.13 192-192 192s-192-86.13-192-192c0-41.31 12.91-80.66 37.31-113.8c7.875-10.69 5.594-25.69-5.062-33.56C85.56 100.8 70.5 103.1 62.69 113.8C32.16 155.2 16 204.4 16 256c0 132.3 107.7 240 239.1 240S496 388.3 496 256S388.3 16 256 16zM239 272.1c4.688 4.688 10.81 7.031 16.97 7.031s12.28-2.344 16.97-7.031c9.375-9.375 9.375-24.56 0-33.94l-79.1-80c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94L239 272.1z"/>
+								</svg>
+								<div class="invite__dur">
+									15 M
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="players">
+					<div class="players__item">
+						<div class="players__name">
+							Flecs1th
+						</div>
+						<div class="players__stat">
+							<div class="user__stat">
+								<div class="user__wins">
+									70
+								</div>
+								<div class="user__percent">
+									60%
+								</div>
+								<div class="user__loses">
+									30
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="players__versus">
+						VS
+					</div>
+					<div class="players__item">
+						<div class="players__name">
+							MaxOnOff
+						</div>
+						<div class="players__stat">
+							<div class="user__stat">
+								<div class="user__wins">
+									70
+								</div>
+								<div class="user__percent">
+									60%
+								</div>
+								<div class="user__loses">
+									30
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<div class="info__wrap info__wrap_bottom">
+				<div class="info__ext">
+					<div class="palette">
+						<div class="palette__elem">
+							<div class="palette__title">
+								Color scheme
+							</div>
+							<div class="palette__wrap">
+								<div class="palette__item palette__item_active"
+									 title="Нажмите для изменения цветовой палитры" data-scheme="0">
+									<div class="palette__inner"></div>
+									<div class="palette__inner"></div>
+								</div>
+								<div class="palette__item" title="Нажмите для изменения цветовой палитры"
+									 data-scheme="1">
+									<div class="palette__inner"></div>
+									<div class="palette__inner"></div>
+								</div>
+								<div class="palette__item" title="Нажмите для изменения цветовой палитры"
+									 data-scheme="2">
+									<div class="palette__inner"></div>
+									<div class="palette__inner"></div>
+								</div>
+								<div class="palette__item" title="Нажмите для изменения цветовой палитры"
+									 data-scheme="3">
+									<div class="palette__inner"></div>
+									<div class="palette__inner"></div>
+								</div>
+								<div class="palette__item" title="Нажмите для изменения цветовой палитры"
+									 data-scheme="4">
+									<div class="palette__inner"></div>
+									<div class="palette__inner"></div>
+								</div>
+								<div class="palette__item" title="Нажмите для изменения цветовой палитры"
+									 data-scheme="5">
+									<div class="palette__inner"></div>
+									<div class="palette__inner"></div>
+								</div>
+								<div class="palette__item" title="Нажмите для изменения цветовой палитры"
+									 data-scheme="6">
+									<div class="palette__inner"></div>
+									<div class="palette__inner"></div>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="moves">
+						<div class="moves__title">
+							Last Move
+						</div>
+						<div class="moves__numbers">
+							<p class="moves__from">G5</p>
+							<span>:</span>
+							<p class="moves__to">E6</p>
+						</div>
+					</div>
+				</div>
+				<div class="stat">
+					<p class="stat__title">
+						Captured figures
+					</p>
+					<div class="stat__captured">
+						<div class="stat__figures stat__figures_user">
+							<div class="stat__icon">
+								<i class="icon-pawn"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-rook"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-knight"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-bishop"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-queen"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-king"></i>
+							</div>
+
+						</div>
+						<div class="stat__border stat__border_first"></div>
+						<div class="stat__border stat__border_second"></div>
+						<div class="stat__figures stat__figures_enemy">
+							<div class="stat__icon">
+								<i class="icon-pawn"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-rook"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-knight"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-bishop"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-queen"></i>
+							</div>
+							<div class="stat__icon">
+								<i class="icon-king"></i>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</section>
+	<div class="result">
+		<canvas id="canvas"> </canvas>
+		<div class="result__item result__item_win" style="display: none">
+			<div class="result__wrap result__wrap_win">
+				<div class="result__text result__text_win" data-text="Victory">Victory</div>
+			</div>
+		</div>
+		<div class="result__item result__item_stalemate" style="display: none">
+			<div class="result__wrap result__wrap_stalemate">
+				<div class="result__text result__text_stalemate">Stalemate</div>
+			</div>
+		</div>
+		<div class="result__item result__item_lose" style="display:none;">
+			<div class="result__wrap result__wrap_lose">
+				<div class="result__text result__text_lose" data-text="Lose">Lose</div>
+				<div class="result__crown result__crown_lose animate__animated animate__hinge">
+					<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+						<!--! Font Awesome Pro 6.0.0-beta1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) -->
+						<defs>
+							<style>.fa-secondary {
+								opacity: .4
+							}</style>
+						</defs>
+						<path d="M39.1 176c.2461 0 .459-.1164 .7051-.1203C40.46 175.9 40.25 176 39.1 176zM535.3 175.9C535.5 175.9 535.8 176 536 176C535.8 176 535.5 175.9 535.3 175.9zM504.5 159.6l-89.63 71.7c-15.91 12.73-39.5 7.546-48.61-10.68l-57.6-115.2C302.6 109.2 295.7 112 287.1 112S273.4 109.2 267.3 105.4L209.7 220.6c-9.111 18.22-32.71 23.4-48.61 10.68l-89.63-71.7C64.3 169.1 53.48 175.6 40.71 175.9l50.52 277.8C93.99 468.9 107.2 480 122.7 480h330.6c15.46 0 28.72-11.06 31.48-26.27l50.52-277.9C522.5 175.6 511.7 169.1 504.5 159.6z"/>
+						<path class="fa-secondary"
+							  d="M288 32C265.9 32 247.1 49.91 247.1 72s17.91 40 40 40s40-17.91 40-40S310.1 32 288 32zM39.1 96c-22.09 0-40 17.91-40 40s17.91 40 40 40s40-17.91 40-40S62.09 96 39.1 96zM536 96c-22.09 0-40 17.91-40 40s17.91 40 40 40S576 158.1 576 136S558.1 96 536 96z"/>
+					</svg>
+				</div>
+			</div>
+			<div class="result__echo result__echo">
+				<div class="result__circle result__circle_second">
+					<div class="result__elem" style="--i:1;">Lose</div>
+					<div class="result__elem" style="--i:2;">Lose</div>
+					<div class="result__elem" style="--i:3;">Lose</div>
+					<div class="result__elem" style="--i:4;">Lose</div>
+					<div class="result__elem" style="--i:5;">Lose</div>
+					<div class="result__elem" style="--i:6;">Lose</div>
+					<div class="result__elem" style="--i:7;">Lose</div>
+					<div class="result__elem" style="--i:8;">Lose</div>
+					<div class="result__elem" style="--i:9;">Lose</div>
+					<div class="result__elem" style="--i:10;">Lose</div>
+					<div class="result__elem" style="--i:11;">Lose</div>
+					<div class="result__elem" style="--i:12;">Lose</div>
+					<div class="result__elem" style="--i:13;">Lose</div>
+					<div class="result__elem" style="--i:14;">Lose</div>
+					<div class="result__elem" style="--i:15;">Lose</div>
+					<div class="result__elem" style="--i:16;">Lose</div>
+					<div class="result__elem" style="--i:17;">Lose</div>
+					<div class="result__elem" style="--i:18;">Lose</div>
+					<div class="result__elem" style="--i:19;">Lose</div>
+					<div class="result__elem" style="--i:20;">Lose</div>
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="inGameModal">
+		<div class="surrender-confirm">
+			<p class="surender-confirm__text">
+				Вы действительно хотите сдаться?
+			</p>
+			<div class="surrender-confirm__buttons">
+				<div class="surrender-confirm__button surrender-confirm__button_yes">
+					Да
+				</div>
+				<div class="surrender-confirm__button surrender-confirm__button_no">
+					Нет
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class="alerts"></div>
+</body>
+</html>

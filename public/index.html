@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Neo Chess - новое видение шахмат">
+    <meta name="keywords" content="шахматы, шахматы онлайн, веб шахматы, шахматы для двоих, шахматы,шахматы для всех,гельфанд шахматы,накамура шахматы,шахматы-это круто,накамура шахматист,накамура,андрей микитин,славянская защита,жертва ферзя,хикару накамура,защита грюнфельда,гельфанд,староиндийская защита,гельфанд накамура,староиндийский бриллиант,магнус карлсен,накамура партии,александр алехин,борис гельфанд,максим вашье лаграв,атака на короля,жертва коня,кабаний удар,chess,chess24,chess.com,fide chess,hess,chess videos,chess tricks,master chess,bullet chess,chess content,chess speedruns,chess game play,chess games,chess final,chess tournament,chess.com videos,chess stream,chess grandmaster,chess instruction,chess masters,chess championship,best chess players,master chess moves,checkmate,twitch streamers,chess tournaments,hikaru chess commentary,world championship chess,world chess championship">
+    <!-- OG Tags -->
+    <meta property="og:title" content="NeoChess">
+    <meta property="og:description" content="Ives Games это способ персонализированной сортировки новостей из мира видеоигр и кибер спорта">
+    <meta property="og:type" content="article">
+    <meta property="og:image" content="img/preview.jpg" >
+    <meta property="og:site_name" content="NeoChess">
+	<title>NeoChess</title>
+	<!-- Favicon -->
+	<link rel="icon" href="img/icons/favicon.ico" type="image/x-icon">
+ 	<link rel="shortcut icon" href="img/icons/favicon.ico" type="image/x-icon">
+	<!-- Fonts -->
+	<link rel="preconnect" href="https://fonts.googleapis.com">
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+	<!-- CSS -->
+	
+	<link rel="stylesheet" type="text/css" href="css/animate.min.css">
+	<link rel="stylesheet" type="text/css" href="css/chess.css">
+	<link rel="stylesheet" type="text/css" href="css/media.css">
+	<!-- JavaScript -->
+	<script type="text/javascript" src="js/jquery-3.5.1.min.js"></script>
+	<script type="text/javascript" src="js/jquery.arcticmodal-0.3.min.js"></script>
+	<script type="text/javascript" src="js/main.js"></script>
+	<!-- <script src="https://kit.fontawesome.com/4daf86c86b.js" crossorigin="anonymous"></script> -->
+</head>
+<body>
+	<div id="page-preloader">
+		<div class="lds-roller spinner" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+	</div>
+	<header class="main">
+		<div class="container">
+			<div class="nav">
+				<div class="game-name">
+					<span>Neo</span>Chess <i class="icon-rook"></i>
+				</div>
+				<div class="nav__friends">
+					<div class="nav__friends-icon">
+						<!-- Users SVG (Friends)-->
+						<svg viewBox="0 0 640 512"><path d="M556.5 192H480c-5.969 0-11.97 .7031-17.84 2.094c-4.297 1.016-6.953 5.328-5.938 9.625C457.2 208 461.5 210.8 465.8 209.7C470.5 208.6 475.3 208 480 208h76.5C593.7 208 624 240.3 624 280C624 284.4 620.8 288 616.9 288H448c-4.422 0-8 3.578-8 8S443.6 304 448 304h168.9C629.6 304 640 293.2 640 280C640 231.5 602.5 192 556.5 192zM512 160c44.18 0 80-35.82 80-80S556.2 0 512 0c-44.18 0-80 35.82-80 80S467.8 160 512 160zM512 16c35.29 0 64 28.71 64 64s-28.71 64-64 64s-64-28.71-64-64S476.7 16 512 16zM128 160c44.18 0 80-35.82 80-80S172.2 0 128 0C83.82 0 48 35.82 48 80S83.82 160 128 160zM128 16c35.29 0 64 28.71 64 64s-28.71 64-64 64s-64-28.71-64-64S92.71 16 128 16zM200 296C200 291.6 196.4 288 192 288H23.09C19.19 288 16 284.4 16 280c0-39.7 30.28-72 67.5-72H160c4.734 0 9.5 .5625 14.16 1.656C178.5 210.8 182.8 208 183.8 203.7c1.016-4.297-1.641-8.609-5.938-9.625C171.1 192.7 165.1 192 160 192H83.5C37.45 192 0 231.5 0 280C0 293.2 10.36 304 23.09 304H192C196.4 304 200 300.4 200 296zM319.9 320c57.41 0 103.1-46.56 103.1-104c0-57.44-46.54-104-103.1-104c-57.41 0-103.1 46.56-103.1 104C215.9 273.4 262.5 320 319.9 320zM319.9 128c48.5 0 87.96 39.48 87.96 88S368.4 304 319.9 304S231.9 264.5 231.9 216S271.4 128 319.9 128zM369.9 352H270.1C191.6 352 128 411.7 128 485.3C128 500.1 140.7 512 156.4 512h327.2C499.3 512 512 500.1 512 485.3C512 411.7 448.4 352 369.9 352zM483.6 496H156.4C149.6 496 144 491.2 144 485.3C144 420.6 200.6 368 270.1 368H369.9c69.54 0 126.1 52.63 126.1 117.3C496 491.2 490.4 496 483.6 496z"/></svg>
+					</div>
+					<div class="nav__friends-text">
+						Friends
+					</div>
+					<div class="friends__inscription" style="display:none;">
+						<div>2</div>
+					</div>
+				</div>
+				<div class="user">
+					<div class="user__logo stat__icon">
+						<i class="icon-knight"></i>
+					</div>
+					<div class="user__sign-out stat__icon">Logout</div>
+					<div class="user__wrap">
+						<div class="user__nickname">
+							MaxOnOff
+						</div>
+						<div class="user__stat">
+							<div class="user__wins" id="userWins">
+								70
+							</div>
+							<div class="user__percent" id="userWinrate">
+								60%
+							</div>
+							<div class="user__loses" id="userLoses">
+								30
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="nav__login">
+					Login
+				</div>
+			</div>
+		</div>
+		<div class="wrap">
+			<div class="wrap__start">
+				<button class="start__btn">Play</button>
+				<div class="wrap__variables">
+					<button class="wrap__random-play">Playing with a random opponent</button>
+					<button class="wrap__friend-play">Playing with a friend</button>
+				</div>
+			</div>
+			<div class="wrap__history">
+				<div class="wrap__history-btn">Match History</div>
+				<div class="wrap__list"></div>
+			</div>
+		</div>
+		<div class="inGameModal">
+			<div class="game-menu">
+				<div class="game-menu__title">Match</div>
+				<div class="game-menu__players">
+					<div class="game-menu__nickname game-menu__nickname_left">
+						...
+					</div>
+					<div class="game-menu__vs">
+						VS
+					</div>
+					<div class="game-menu__nickname game-menu__nickname_right">
+						...
+					</div>
+				</div>
+				<div class="game-menu__bth game-menu__start-btn">start</div>
+				<div class="game-menu__bth game-menu__settings-btn game-menu__settings-btn_clicked">
+					<div class="game-menu__text" style="display: none">
+						<div class="game-menu__btn-icon">
+							<svg viewBox="0 0 512 512">
+								<path d="M255.1 512c-56.05 0-75.99-11.33-75.99-35.94V436.5c-15.17-6.375-29.35-14.53-42.36-24.41l-34.3 19.78c-4.621 2.703-9.976 4.013-15.36 4.013c-36.71 0-76.25-92.87-76.25-108.6c0-10.85 5.806-21.34 15.71-27.07l34.17-19.72C60.52 272.1 59.99 264 59.99 255.1s.5313-16.13 1.625-24.47L27.42 211.8C17.53 206.1 11.73 195.6 11.73 184.7c0-12.58 37.98-108.7 76.2-108.7c5.417 0 10.82 1.338 15.52 4.111L137.6 99.88C150.6 90.01 164.8 81.85 179.1 75.47V35.91C179.1 4.335 215.7 0 256 0c39.71 0 75.1 4.083 75.1 35.91v39.56c15.17 6.375 29.35 14.53 42.36 24.41l34.3-19.78c4.621-2.703 9.981-4.013 15.37-4.013c36.47 0 76.24 92.55 76.24 108.6c0 10.85-5.806 21.34-15.71 27.07l-34.17 19.72c1.094 8.344 1.625 16.44 1.625 24.47s-.5313 16.13-1.625 24.47l34.19 19.75c9.895 5.703 15.7 16.19 15.7 27.05c0 12.59-37.98 108.7-76.21 108.7c-5.42 0-10.83-1.338-15.51-4.111l-34.19-19.72c-13.02 9.876-27.19 18.03-42.36 24.41v39.56C332 500.6 312.1 512 255.1 512zM140.9 373.2c35.92 30.82 52.34 34.36 71.05 41v61.85c14.11 2.344 28.82 3.727 43.76 3.727c14.95 0 30.13-1.383 45.19-4.571l-.9532-61c16.07-5.702 35.18-10.22 71.05-41l53.61 30.97c18.78-22.06 33.77-47.97 43.39-76.57l-52.94-30.56c2.745-14.99 4.859-25.43 4.859-39.07c0-10.95-1.364-23.97-4.859-43.06l53.46-30.85c-9.829-27.75-24.92-53.97-45.1-76.72l-52.43 31.41c-35.92-30.82-52.34-34.36-71.05-41V35.91c-14.11-2.344-28.82-3.727-43.76-3.727c-14.95 0-30.13 1.383-45.19 4.571l.9532 61C195.9 103.5 176.8 107.1 140.9 138.8L87.33 107.8c-18.99 22.31-34.08 48.53-43.69 77.47l53.24 29.66C94.14 229.9 92.02 240.4 92.02 253.1c0 10.95 1.364 23.97 4.859 43.06l-53.46 30.85c9.829 27.75 24.92 53.97 45.1 76.72L140.9 373.2zM256 351.1c-52.94 0-96-43.06-96-96S203.1 159.1 256 159.1s96 43.06 96 96S308.9 351.1 256 351.1zM256 191.1c-35.3 0-64 28.72-64 64S220.7 319.1 256 319.1s64-28.72 64-64S291.3 191.1 256 191.1z"/>
+							</svg>
+						</div>
+						<div class="game-menu__text">Match setup</div>
+					</div>
+					<div class="game-menu__wrapper" style="display: block">
+						<div class="game-menu__settings">
+							<div class="game-menu__elem" data-mode="default" data-mode-color="#77C19F">
+								<div class="game-menu__icon game-menu__icon_turtle">
+									<!-- Turtle -->
+									<svg viewBox="0 0 640 512">
+										<path d="M637.1 160.5c-5.25-20.75-18.88-38.25-36.13-50.62C556.3 78 545.1 64 507.6 64c-39.63 0-73.5 23.62-86.25 57.88C380.8 71.5 317.8 32 248.4 32C232.3 32 84.63 43.88 35.5 191.5C30.13 207.6 31 224.6 37.5 240H32C14.38 240 0 254.4 0 272V288c0 11.88 6.625 22.75 17.13 28.38l81.5 42.75L70.5 408c-8.625 14.75-8.625 33.25 0 48C79 470.8 94.88 480 112 480H149c17.13 0 32.1-9.125 41.5-24l27.75-47.88c40.25 10.38 97.5 10.88 139.6 0L385.5 456c8.5 14.88 24.38 24 41.5 24h37c17.13 0 33-9.25 41.5-24c8.625-14.75 8.625-33.25 0-48l-30.63-53.13c30.63-20.75 51.25-50 61.5-82.88h15C607.8 272 651.9 219.1 637.1 160.5zM81.13 206.6C100.3 149.1 167.5 80 247.6 80h.75c80.13 0 147.4 69.12 166.5 126.6C418.1 216.5 408.3 239 384.1 239.8L114.6 240C92.13 240 75.5 223.5 81.13 206.6zM551.4 224h-47.38c-11.25 90.38-74.88 101.6-96.5 110.2L464 432h-37l-46.75-81c-66.88 21.88-108.8 24.75-184.5 0L149 432H112l53.25-92.13L66.38 288l316.6 .0002c32.13 0 80.88-21.75 81-79.75V153c0-19.88 11.63-30.5 21.75-35.75c31.5-16.12 47.13 3 89.25 33c10.63 7.625 17 20 17 33.13C592 205.8 573.8 224 551.4 224zM512 143.1c-8.875 0-16 7.125-16 16s7.125 16 16 16s16-7.125 16-16S520.9 143.1 512 143.1z"/>
+									</svg>
+								</div>
+								<div class="game-menu__duration game-menu__duration_first">
+									<!-- Infinity simbol -->
+								</div>
+							</div>
+							<div class="game-menu__elem" data-mode="mild" data-mode-color="#ff8b02">
+								<div class="game-menu__icon game-menu__icon_timer">
+									<!-- Timer -->
+									<svg viewBox="0 0 512 512">
+										<path d="M256 16c-13.25 0-24 10.75-24 24v80C232 133.3 242.8 144 256 144s24-10.75 24-24V65.5C374.6 77.34 448 158.3 448 256c0 105.9-86.13 192-192 192s-192-86.13-192-192c0-41.31 12.91-80.66 37.31-113.8c7.875-10.69 5.594-25.69-5.062-33.56C85.56 100.8 70.5 103.1 62.69 113.8C32.16 155.2 16 204.4 16 256c0 132.3 107.7 240 239.1 240S496 388.3 496 256S388.3 16 256 16zM239 272.1c4.688 4.688 10.81 7.031 16.97 7.031s12.28-2.344 16.97-7.031c9.375-9.375 9.375-24.56 0-33.94l-79.1-80c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94L239 272.1z"/>
+									</svg>
+								</div>
+								<div class="game-menu__duration">
+									15 M
+								</div>
+							</div>
+							<div class="game-menu__elem" data-mode="fast" data-mode-color="#ffc700">
+								<div class="game-menu__icon game-menu__icon_bolt">
+									<!-- Bolt / Thunder -->
+									<svg viewBox="0 0 384 512">
+										<path d="M373.1 280.1l-255.1 223.1C111.1 509.3 103.5 512 96 512c-6.593 0-13.19-2.016-18.81-6.109c-12.09-8.781-16.5-24.76-10.59-38.5L143.5 288L32.01 288c-13.34 0-25.28-8.266-29.97-20.75c-4.687-12.47-1.125-26.55 8.906-35.33l255.1-223.1c11.25-9.89 27.81-10.58 39.87-1.799c12.09 8.781 16.5 24.76 10.59 38.5l-76.88 179.4l111.5-.0076c13.34 0 25.28 8.266 29.97 20.75C386.6 257.2 383.1 271.3 373.1 280.1z"/>
+									</svg>
+								</div>
+								<div class="game-menu__duration">
+									5 M
+								</div>
+							</div>
+							<div class="game-menu__elem" data-mode="mad" data-mode-color="#af1905">
+								<div class="game-menu__icon game-menu__icon_fire">
+									<!-- Fire / Flame -->
+									<svg viewBox="0 0 384 512">
+										<path d="M203.1 4.364c-6.179-5.822-16.06-5.818-22.24 .005C74.52 104.6 0 220.2 0 298C0 423.1 79 512 192 512s192-88.01 192-213.1C384 219.9 309 104.2 203.1 4.364zM192 448c-70.62 0-128-52.88-128-117.9c0-44.12 25.88-71.5 34.38-79.75c3.125-3.125 8.125-3.125 11.25 0C111.1 251.9 112 253.9 112 256v40C112 327 137 352 168 352C198.9 352 224 327 224 296C224 224 111.4 231.2 184.5 131.6C187.5 127.8 192 127.5 195.1 128.5c1.625 .5 5.375 2.25 5.375 6.75c0 33.63 25.12 54.1 51.63 77.63C285.5 241.5 320 271 320 330.1C320 395.1 262.6 448 192 448z"/>
+									</svg>
+								</div>
+								<div class="game-menu__duration">
+									1 M
+								</div>
+							</div>
+						</div>
+						<div class="game-menu__mark"><span>*</span> The specified time means the duration of all moves
+							of 1 player. After this time expires, the player loses <span>*</span></div>
+					</div>
+				</div>
+				<div class="game-menu__exit" title="delete the lobbi">
+					<svg viewBox="0 0 448 512">
+						<path d="M432 256C432 269.3 421.3 280 408 280h-160v160c0 13.25-10.75 24.01-24 24.01S200 453.3 200 440v-160h-160c-13.25 0-24-10.74-24-23.99C16 242.8 26.75 232 40 232h160v-160c0-13.25 10.75-23.99 24-23.99S248 58.75 248 72v160h160C421.3 232 432 242.8 432 256z"/>
+					</svg>
+				</div>
+			</div>
+		</div>
+	</header>
+
+	<div class="online__parent"></div>
+	<div class="online" style="display: none;">
+		<div class="online__title">Friends online</div>
+		<div class="online__items">
+
+		</div>
+		<div class="online-collapse">
+			<div class="online-collapse__arrows">
+				<div class="online-collapse__arrow"></div>
+				<div class="online-collapse__arrow"></div>
+				<div class="online-collapse__arrow"></div>
+			</div>
+			<div class="online-collapse__text">
+				Friends online
+			</div>
+			<div class="online-collapse__inscription" style="display:none;">
+				<div>2</div>
+			</div>
+		</div>
+	</div>
+
+
+	<!-- </header> -->
+
+	<!-- Friends -->
+	<div class="inGameModal">
+		<div class="friends" id="friends">
+			<div class="friends__title">
+				Friends
+			</div>
+			<div class="friends__select">
+				<div class="friends__btn friends__all">
+					My friends
+				</div>
+				<div class="friends__border friends__border_first"></div>
+				<div class="friends__border friends__border_second"></div>
+				<div class="friends__btn friends__request">
+					Friend requests
+				</div>
+			</div>
+			<div class="friends__signpost">
+				<div class="friends__signpost-line"></div>
+			</div>
+			<div class="friends__search">
+				<input class="friends__input" type="text" placeholder="Search friends">
+				<div class="friends__search-icon">
+					<svg viewBox="0 0 512 512"><path d="M504.1 471l-134-134C399.1 301.5 415.1 256.8 415.1 208c0-114.9-93.13-208-208-208S-.0002 93.13-.0002 208S93.12 416 207.1 416c48.79 0 93.55-16.91 129-45.04l134 134C475.7 509.7 481.9 512 488 512s12.28-2.344 16.97-7.031C514.3 495.6 514.3 480.4 504.1 471zM48 208c0-88.22 71.78-160 160-160s160 71.78 160 160s-71.78 160-160 160S48 296.2 48 208z"/></svg>
+				</div>
+			</div>
+			<div class="friends__list">
+
+
+			</div>
+		</div>
+	</div>
+
+	<div class="invites">
+
+		
+
+	</div>
+
+
+
+
+
+
+	<!--  -->
+	<div class="alerts"></div>
+
+	<div class="version">
+		V: beta 0.27
+	</div>
+
+	<div class="inGameModal">
+		<div class="control">
+			<div class="control__title">
+				Дополнительная информация
+			</div>
+			<div class="control__select">
+				<div class="control__btn version-control__btn_updates">
+					Обновления
+				</div>
+				<div class="control__border control__border_first"></div>
+				<div class="control__border control__border_second"></div>
+				<div class="control__btn control__btn_statistic">
+					Статистика
+				</div>
+			</div>
+			<div class="control__signpost">
+				<div class="control__signpost-line"></div>
+			</div>
+			<div class="control__pages">
+				<div class="control__items">
+					<div class="control__item" data-version="beta 0.28">
+						<div class="control__head">
+							Обновление beta 0.28 есть изменения?
+						</div>
+						<ul class="control__points">
+							<li>
+								Исправленна геймплейная ошибка функции пата
+							</li>
+							<li>
+								Исправленны ошибки отслеживания координат фигур
+							</li>
+							<li>
+								Исправлен баг истории матчей
+							</li>
+							<li>
+								Исправленны множественные ошибки адаптива
+							</li>
+							<li>
+								В проект добавлена система контроля версий git
+							</li>
+						</ul>
+					</div>
+					<div class="control__item" data-version="beta 0.27">
+						<div class="control__head">
+							Обновление beta 0.27 что нового?
+						</div>
+						<ul class="control__points">
+							<li>
+								Исправленны критические ошибки геймплейного скрипта
+							</li>
+							<li>
+								Исправленны визуальные и логические ошибки
+							</li>
+							<li>
+								Исправленна ошибка разницы часовых поясов
+							</li>
+							<li>
+								Добавленны игровые звуки
+							</li>
+							<li>
+								Добавленны блок и подсветка последнего хода
+							</li>
+							<li>
+								Добавленны вывод информации об обновлениях и вывод статистики проекта
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="control__statistic">
+					<div class="control__visits">
+						Посещения: <span>453</span>
+					</div>
+					<div class="control__users">
+						Зарегестрированные пользователи: <span>453</span>
+					</div>
+					<div class="control__matches">
+						Сыгранно матчей: <span>453</span>
+					</div>
+					<div class="control__online">
+						Игроков онлайн: <span>453</span>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<div style="display: none;">
+		<form class="box-modal login" id="authorization">
+			<div class="login__greet">Welcome back</div>
+			<div class="login__social">
+				<div class="login__item login__item_vk">
+					<svg viewBox="0 0 576 512"><path d="M545 117.7c3.7-12.5 0-21.7-17.8-21.7h-58.9c-15 0-21.9 7.9-25.6 16.7 0 0-30 73.1-72.4 120.5-13.7 13.7-20 18.1-27.5 18.1-3.7 0-9.4-4.4-9.4-16.9V117.7c0-15-4.2-21.7-16.6-21.7h-92.6c-9.4 0-15 7-15 13.5 0 14.2 21.2 17.5 23.4 57.5v86.8c0 19-3.4 22.5-10.9 22.5-20 0-68.6-73.4-97.4-157.4-5.8-16.3-11.5-22.9-26.6-22.9H38.8c-16.8 0-20.2 7.9-20.2 16.7 0 15.6 20 93.1 93.1 195.5C160.4 378.1 229 416 291.4 416c37.5 0 42.1-8.4 42.1-22.9 0-66.8-3.4-73.1 15.4-73.1 8.7 0 23.7 4.4 58.7 38.1 40 40 46.6 57.9 69 57.9h58.9c16.8 0 25.3-8.4 20.4-25-11.2-34.9-86.9-106.7-90.3-111.5-8.7-11.2-6.2-16.2 0-26.2.1-.1 72-101.3 79.4-135.6z"/></svg>
+				</div>
+				<div class="login__item login__item_google">
+					<img src="img/icons/google.png" alt="">
+				</div>
+			</div>
+			<input type="email" 
+			placeholder="E-mail" 
+			id="logEmail" 
+			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+			title="Please Enter Valid Email!"
+			autocomplete="on"
+			required>
+			<!-- <input type="text" 
+			placeholder="Login" 
+			id="login" 
+			pattern="[a-zA-Z\d]{4,12}" 
+			title="Логин должен содержать от 4 до 12 символов и включать в себя только буквы и цифры латинского алфавита!"
+			autocomplete="off"
+			required> -->
+			<div style="position: relative;">
+				<input type="password"
+				id="logPassword" 
+				name="password" 
+				placeholder="Password" 
+				autocomplete="off"
+				required>
+				<label class="logPassword__label" for="logPassword">
+					<img class="logPassword__label-eye eye__open eye__sost" src="img/icons/eye_open.png">
+					<img class="logPassword__label-eye eye__close" src="img/icons/eye_close.png">
+				</label>
+			</div>
+			
+			
+			<button type="submit" class="login__button">Login</button>
+			<div class="login__reg">
+				New here? <span class="outline toRegistration">Registration</span>
+			</div>
+			<div class="outline login__forgot toRecovery">
+				Forgot your password?
+			</div>
+		</form>
+	</div>
+	<div style="display: none;">
+		<form class="box-modal login" id="recovery">
+			<div class="login__greet">Recovery password</div>
+			<div class="login__forgot" style="width: 250px">
+				Для восстановления пароля введите свой email
+			</div>
+			<input type="email"
+				   placeholder="E-mail"
+				   id="recEmail"
+				   pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+				   title="Please Enter Valid Email Id"
+				   autocomplete="on"
+				   required>
+			<button type="submit" class="login__button">Recovery</button>
+		</form>
+	</div>
+	<div style="display: none;">
+		<form class="box-modal login" id="registration">
+			<div class="login__greet">Registration</div>
+			<input type="email" 
+			placeholder="E-mail" 
+			id="regEmail" 
+			pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
+			title="Please Enter Valid Email Id"
+			autocomplete="on"
+			required>
+			<input type="text" 
+			placeholder="Nickname" 
+			id="regNick" 
+			pattern="[a-zA-Z\d]{4,12}" 
+			title="Nickname must contain from 4 to 12 characters and include only letters and numbers of the Latin alphabet!"
+			autocomplete="off"
+			required>
+			<input type="password"
+			id="regPassword1" 
+			name="password" 
+			placeholder="Password"
+			title="Please Enter Valid password!" 
+			autocomplete="off"
+			required>
+			<input type="password"
+			id="regPassword2" 
+			name="password" 
+			placeholder="Confirm password"
+			title="Please Enter Valid password!"
+			autocomplete="off"
+			required>
+			<button type="submit" class="login__button">Registration</button>
+			<div class="login__reg">
+				Already have an account? <span class="outline toLogin">Login</span>
+			</div>
+		</form>
+	</div>	
+</body>
+</html>
