@@ -17,7 +17,7 @@ function resizeBoard() {
 			leftCorrect = "-"+leftCorrect+"px"
 		}
 		if (userColor == "black") {
-			$('.board').css("transform",`scale(${scaleCorrect}) rotate(180deg)`)
+			$('.board').css("transform",`scale(${scaleCorrect}) rotateX(180deg)`)
 		}else {
 			$('.board').css("transform",`scale(${scaleCorrect})`)
 		}
@@ -632,47 +632,48 @@ function  definitionColor() {
 function createFigures(object) {
 	var tempX = object.x * 100 - 100;
 	var tempY = object.y * 100 - 100;
+	var tempSrc;
 	switch (object.chessmen) {
 		case "pawn":
 			if (object.color == "white") {
-				var tempSrc = '<i class="icon-pawn white__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-pawn white__figures" style="transform:rotateY(90deg);"></i>';
 			}else {
-				var tempSrc = '<i class="icon-pawn black__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-pawn black__figures" style="transform:rotateY(90deg);"></i>';
 			}
 			break;
 		case "knight":
 			if (object.color == "white") {
-				var tempSrc = '<i class="icon-knight white__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-knight white__figures" style="transform:rotateY(90deg);"></i>';
 			}else {
-				var tempSrc = '<i class="icon-knight black__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-knight black__figures" style="transform:rotateY(90deg);"></i>';
 			}
 			break;
 		case "rook":
 			if (object.color == "white") {
-				var tempSrc = '<i class="icon-rook white__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-rook white__figures" style="transform:rotateY(90deg);"></i>';
 			}else {
-				var tempSrc = '<i class="icon-rook black__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-rook black__figures" style="transform:rotateY(90deg);"></i>';
 			}
 			break;
 		case "bishop":
 			if (object.color == "white") {
-				var tempSrc = '<i class="icon-bishop white__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-bishop white__figures" style="transform:rotateY(90deg);"></i>';
 			}else {
-				var tempSrc = '<i class="icon-bishop black__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-bishop black__figures" style="transform:rotateY(90deg);"></i>';
 			}
 			break;
 		case "queen":
 			if (object.color == "white") {
-				var tempSrc = '<i class="icon-queen white__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-queen white__figures" style="transform:rotateY(90deg);"></i>';
 			}else {
-				var tempSrc = '<i class="icon-queen black__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-queen black__figures" style="transform:rotateY(90deg);"></i>';
 			}
 			break;
 		case "king":
 			if (object.color == "white") {
-				var tempSrc = '<i class="icon-king white__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-king white__figures" style="transform:rotateY(90deg);"></i>';
 			}else {
-				var tempSrc = '<i class="icon-king black__figures" style="transform:rotateY(90deg);"></i>';
+				tempSrc = '<i class="icon-king black__figures" style="transform:rotateY(90deg);"></i>';
 			}
 			break;
 	}
@@ -707,48 +708,48 @@ function switchPawnHtml(oldId) {
 	$('.figures').children('[data-figures-id="' + oldId + '"]').children("i").css("transform", "rotateY(90deg)");
 
 	setTimeout(() => {
-
+		var tempSrc
 		switch (oldObj.chessmen) {
 			case "pawn":
 				if (oldObj.color == "white") {
-					var tempSrc = '<i class="icon-pawn white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-pawn white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}else {
-					var tempSrc = '<i class="icon-pawn black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-pawn black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}
 				break;
 			case "knight":
 				if (oldObj.color == "white") {
-					var tempSrc = '<i class="icon-knight white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-knight white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}else {
-					var tempSrc = '<i class="icon-knight black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-knight black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}
 				break;
 			case "rook":
 				if (oldObj.color == "white") {
-					var tempSrc = '<i class="icon-rook white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-rook white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}else {
-					var tempSrc = '<i class="icon-rook black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-rook black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}
 				break;
 			case "bishop":
 				if (oldObj.color == "white") {
-					var tempSrc = '<i class="icon-bishop white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-bishop white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}else {
-					var tempSrc = '<i class="icon-bishop black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-bishop black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}
 				break;
 			case "queen":
 				if (oldObj.color == "white") {
-					var tempSrc = '<i class="icon-queen white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-queen white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}else {
-					var tempSrc = '<i class="icon-queen black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-queen black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}
 				break;
 			case "king":
 				if (oldObj.color == "white") {
-					var tempSrc = '<i class="icon-king white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-king white__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}else {
-					var tempSrc = '<i class="icon-king black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
+					tempSrc = '<i class="icon-king black__figures" style="transform:rotateY(90deg);" data-figure-status="changed"></i>';
 				}
 				break;
 		}
@@ -1139,15 +1140,33 @@ function kingCheck2(kingX,kingY,testBoard,ax,ay,status) {
 		}
 	}
 }
-
+//проверка пешек
 function kingCheck3(kingX,kingY,testBoard,ax,ay,status) {
+	if (status == true ) {
+		console.log("in func")
+		console.log("kingX+ax",kingX+ax)
+		console.log("kingY+ay",kingY+ay)
+	}
 	if (((kingX+ax)<9 && (kingX+ax)>0)
 		&&
 		((kingY+ay)<9 && (kingY+ay)>0)
 	)
 	{
+		if (status == true ) {
+			console.log("in if")
+			console.log("ax",ax,"ay",ay)
+		}
+
 		if (typeof(testBoard[kingY+ay][kingX+ax]) == "object") {
+			if (status == true ) {
+				console.log("in obj")
+			}
+
 			if(testBoard[kingY+ay][kingX+ax].color != testBoard[kingY][kingX].color && testBoard[kingY+ay][kingX+ax].chessmen == "pawn") {
+
+				if (status == true ) {
+					console.log("in check")
+				}
 				check = 1;
 				if (status == true) {
 					attackFig = testBoard[kingY+ay][kingX+ax];
@@ -1181,9 +1200,9 @@ function kingPos(kingX,kingY,testBoard,status) {
 
 	if (testBoard[kingY][kingX].color == "white") {
 		kingCheck3(kingX,kingY,testBoard,-1,-1,status)
-		kingCheck3(kingX,kingY,testBoard,-1,1,status)
-	}else if(testBoard[kingY][kingX].color == "black"){
 		kingCheck3(kingX,kingY,testBoard,1,-1,status)
+	}else if(testBoard[kingY][kingX].color == "black"){
+		kingCheck3(kingX,kingY,testBoard,-1,1,status)
 		kingCheck3(kingX,kingY,testBoard,1,1,status)
 	}
 
@@ -1226,7 +1245,6 @@ function kingPos(kingX,kingY,testBoard,status) {
 
 //проверка на пат если противник не может ходить
 function stalemateCheck1() {
-	console.log("Функция пата 1")
 	var stalemateSteps = [];
 	for (var row of board) {
 		for (var fig of row) {
@@ -1259,7 +1277,6 @@ function stalemateCheck1() {
 							stalemateSteps.splice(mayStepIndex, 1)
 						}
 					}
-					console.log(stalemateSteps)
 					if (stalemateSteps.length > 0) {
 						return
 					}

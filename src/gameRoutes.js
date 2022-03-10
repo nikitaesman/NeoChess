@@ -487,18 +487,253 @@ export function  gameRoutes(app,connection,lobbys,games,gamesLoop,str_rand)  {
 
     var figures = [
         {
-            chessmen: "king",
+            chessmen: "pawn",
             color: "black",
             x: 1,
-            y: 8,
-            start: 0,
+            y: 2,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "black",
+            x: 2,
+            y: 2,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "black",
+            x: 3,
+            y: 2,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "black",
+            x: 4,
+            y: 2,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "black",
+            x: 5,
+            y: 2,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "black",
+            x: 6,
+            y: 2,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "black",
+            x: 7,
+            y: 2,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "black",
+            x: 8,
+            y: 2,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "rook",
+            color: "black",
+            x: 1,
+            y: 1,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "rook",
+            color: "black",
+            x: 8,
+            y: 1,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "knight",
+            color: "black",
+            x: 2,
+            y: 1,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "knight",
+            color: "black",
+            x: 7,
+            y: 1,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "bishop",
+            color: "black",
+            x: 3,
+            y: 1,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "bishop",
+            color: "black",
+            x: 6,
+            y: 1,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "queen",
+            color: "black",
+            x: 4,
+            y: 1,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "king",
+            color: "black",
+            x: 5,
+            y: 1,
+            start: 1,
+            killed: 0
+        },
+
+
+
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 1,
+            y: 7,
+            start: 1,
             killed: 0
         },
         {
             chessmen: "pawn",
             color: "white",
             x: 2,
-            y: 6,
+            y: 7,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 3,
+            y: 7,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 4,
+            y: 7,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 5,
+            y: 7,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 6,
+            y: 7,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 7,
+            y: 7,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 8,
+            y: 7,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "rook",
+            color: "white",
+            x: 8,
+            y: 8,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "rook",
+            color: "white",
+            x: 1,
+            y: 8,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "knight",
+            color: "white",
+            x: 2,
+            y: 8,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "knight",
+            color: "white",
+            x: 7,
+            y: 8,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "bishop",
+            color: "white",
+            x: 3,
+            y: 8,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "bishop",
+            color: "white",
+            x: 6,
+            y: 8,
+            start: 1,
+            killed: 0
+        },
+        {
+            chessmen: "queen",
+            color: "white",
+            x: 4,
+            y: 8,
             start: 1,
             killed: 0
         },
@@ -506,273 +741,47 @@ export function  gameRoutes(app,connection,lobbys,games,gamesLoop,str_rand)  {
             chessmen: "king",
             color: "white",
             x: 5,
+            y: 8,
+            start: 1,
+            killed: 0
+        }
+    ]
+
+
+    figures = [
+        {
+            chessmen: "king",
+            color: "black",
+            x: 5,
             y: 1,
             start: 0,
             killed: 0
         },
+        {
+            chessmen: "king",
+            color: "white",
+            x: 5,
+            y: 8,
+            start: 0,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 5,
+            y: 3,
+            start: 0,
+            killed: 0
+        },
+        {
+            chessmen: "pawn",
+            color: "white",
+            x: 4,
+            y: 3,
+            start: 0,
+            killed: 0
+        }
     ]
-    // var figures = [
-    //     {
-    //         chessmen: "pawn",
-    //         color: "black",
-    //         x: 1,
-    //         y: 2,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "black",
-    //         x: 2,
-    //         y: 2,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "black",
-    //         x: 3,
-    //         y: 2,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "black",
-    //         x: 4,
-    //         y: 2,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "black",
-    //         x: 5,
-    //         y: 2,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "black",
-    //         x: 6,
-    //         y: 2,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "black",
-    //         x: 7,
-    //         y: 2,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "black",
-    //         x: 8,
-    //         y: 2,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "rook",
-    //         color: "black",
-    //         x: 1,
-    //         y: 1,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "rook",
-    //         color: "black",
-    //         x: 8,
-    //         y: 1,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "knight",
-    //         color: "black",
-    //         x: 2,
-    //         y: 1,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "knight",
-    //         color: "black",
-    //         x: 7,
-    //         y: 1,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "bishop",
-    //         color: "black",
-    //         x: 3,
-    //         y: 1,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "bishop",
-    //         color: "black",
-    //         x: 6,
-    //         y: 1,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "queen",
-    //         color: "black",
-    //         x: 4,
-    //         y: 1,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "king",
-    //         color: "black",
-    //         x: 5,
-    //         y: 1,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //
-    //
-    //
-    //     {
-    //         chessmen: "pawn",
-    //         color: "white",
-    //         x: 1,
-    //         y: 7,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "white",
-    //         x: 2,
-    //         y: 7,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "white",
-    //         x: 3,
-    //         y: 7,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "white",
-    //         x: 4,
-    //         y: 7,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "white",
-    //         x: 5,
-    //         y: 7,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "white",
-    //         x: 6,
-    //         y: 7,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "white",
-    //         x: 7,
-    //         y: 7,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "pawn",
-    //         color: "white",
-    //         x: 8,
-    //         y: 7,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "rook",
-    //         color: "white",
-    //         x: 8,
-    //         y: 8,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "rook",
-    //         color: "white",
-    //         x: 1,
-    //         y: 8,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "knight",
-    //         color: "white",
-    //         x: 2,
-    //         y: 8,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "knight",
-    //         color: "white",
-    //         x: 7,
-    //         y: 8,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "bishop",
-    //         color: "white",
-    //         x: 3,
-    //         y: 8,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "bishop",
-    //         color: "white",
-    //         x: 6,
-    //         y: 8,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "queen",
-    //         color: "white",
-    //         x: 4,
-    //         y: 8,
-    //         start: 1,
-    //         killed: 0
-    //     },
-    //     {
-    //         chessmen: "king",
-    //         color: "white",
-    //         x: 5,
-    //         y: 8,
-    //         start: 1,
-    //         killed: 0
-    //     }
-    // ]
-
 
 
 

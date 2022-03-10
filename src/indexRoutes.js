@@ -3,6 +3,7 @@ import bcrypt from "bcryptjs";
 import nodemailer from "nodemailer";
 import * as Config from "./config.js";
 import {emailConfirm, emailRecovery} from "./confirm_mail.js";
+import session from 'express-session'
 import {resolveContent} from "nodemailer/lib/shared/index.js";
 
 
@@ -27,6 +28,12 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
                 }
                 var user = rows[0]
 
+                if (req.session.user.sessionId != user.sessionId) {
+                    req.session.destroy()
+                    res.status(200).json({type:"error", message: "Сессия устарела"})
+                    return
+                }
+
                 var task = ""
                 if (user.task != "") {
                     task = JSON.parse(user.task)
@@ -47,7 +54,7 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
 
                 if(friendsArr.length != 0) {
                     var friendsOnline = []
-                    var nowDate = new Date()
+                    var nowDate = new Date(moment().tz("Europe/Moscow").format("YYYY-MM-DD HH:mm:ss"))
                     var friendsCount = friendsArr.length
 
                     for (var friendId of friendsArr) {
@@ -487,15 +494,27 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
                     if(rows[0].active == 1) {
                         var tempUser = {
                             id: rows[0].id,
-                            nick: rows[0].nick
+                            nick: rows[0].nick,
+                            sessionId: str_rand(7)
                         }
 
-                        req.session.user = tempUser
-                        req.session.save()
 
 
-                        //User is valid
-                        res.status(200).json({type: "successful", message: `Пользователь ${data.email} авторизирован`})
+                        const querySessionId = `UPDATE users SET SessionId = '${tempUser.sessionId}' WHERE id = ${tempUser.id}`
+
+                        connection.query(querySessionId, (err, result)=>{
+                            if (err) {
+                                console.log(err)
+                                return
+                            }
+
+                            req.session.user = tempUser
+                            req.session.save()
+
+                            //User is valid
+                            res.status(200).json({type: "successful", message: `Пользователь ${data.email} авторизирован`})
+                        })
+
                     }else {
                         res.status(200).json({type: "error", message: `Для входа в аккаунт подтвердите электронную почту`})
                     }
