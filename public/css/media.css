@@ -361,6 +361,11 @@
         transform: scale(0.6);
         margin: 0;
     }
+
+    .result__item {
+        width: 100%;
+        height: 100%;
+    }
 }
 
 /* 577 - 768*/
@@ -510,6 +515,14 @@
 
     .stat__figures_enemy {
         padding: 0px 0px 0px 15px;
+    }
+
+    .result {
+        transform: scale(0.7);
+    }
+
+    .result__item {
+        transform: scale(0.7);
     }
 }
 /* 320 - 576 */
@@ -725,6 +738,14 @@
         margin: -15% 0px 0px 0px;
     }
 
+    .game-mode__title {
+        display: none;
+    }
+
+    .timer__title {
+        display: none;
+    }
+
     .settings {
         margin-top: 0;
     }
@@ -765,5 +786,11 @@
         margin: -15px 0px 0px 0px;
     }
 
+    .result {
+        transform: scale(0.6);
+    }
 
+    .result__item {
+        transform: scale(0.6);
+    }
 }

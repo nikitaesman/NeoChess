@@ -154,7 +154,20 @@ function checkUser() {
 	})
 }
 
+function checkSession() {
+	$.post('/auth/user',{
+
+	}, function(data) {
+		if(data.type == "successful") {
+
+		}else {
+			window.location.href = '/';
+		}
+	})
+}
+
 var gameLoop = setInterval(()=>{
+	checkSession();
 	if(game != "") {
 		checkGame()
 
@@ -479,7 +492,7 @@ function  checkGame() {
 						for (var row of board) {
 							for (var object of row) {
 								if (typeof(object) == "object") {
-									createFigures(object);
+									createFigures(object, "figures__item");
 								}
 							}
 						}
@@ -488,12 +501,23 @@ function  checkGame() {
 					if (game.mate == true) {
 						clearInterval(gameLoop);
 						if (game.winner == user.id) {
+							if (game.timeLose != undefined) {
+								if (game.timeLose != user.id) {
+									addTextAlert("У соперника законьчилось время")
+								}
+							}
 							$('.result').fadeIn(400)
 							$(".result__item_win").css("display", "flex")
 							fireworkAnimation();
 							soundWin.play()
 						}else {
-							addTextAlert("Вам поставили мат.")
+							if (game.timeLose != undefined) {
+								if (game.timeLose == user.id) {
+									addTextAlert("У вас законьчилось время")
+								}
+							}else {
+								addTextAlert("Вам поставили мат.")
+							}
 							$('.result').fadeIn(400)
 							$(".result__item_lose").css("display", "flex")
 							soundLose.play()
@@ -507,6 +531,7 @@ function  checkGame() {
 						$('.result').fadeIn(400)
 						$(".result__item_stalemate").css("display", "flex")
 
+						addTextAlert("Ничья")
 						setTimeout(()=>{
 							window.location.href = '/';
 						},8000)
@@ -524,6 +549,14 @@ function  checkGame() {
 
 						$('.moves__from').html(numToAbc(game.lastMove.from.x,game.lastMove.from.y))
 						$('.moves__to').html(numToAbc(game.lastMove.to.x,game.lastMove.to.y))
+
+						$('.moves__chessmen').html(board[game.lastMove.to.y][game.lastMove.to.x].chessmen)
+						if (game.lastMove.type == "kill") {
+							$('.moves__type').html(game.lastMove.type+" "+game.lastMove.killChessmen)
+						}else {
+							$('.moves__type').html(game.lastMove.type)
+						}
+
 
 						if (game.lastMove.checkState == true && game.mate == false && board[game.lastMove.to.y][game.lastMove.to.x].color != userColor) {
 							check = 1
@@ -629,7 +662,7 @@ function  definitionColor() {
 
 
 
-function createFigures(object) {
+function createFigures(object, figClass) {
 	var tempX = object.x * 100 - 100;
 	var tempY = object.y * 100 - 100;
 	var tempSrc;
@@ -677,7 +710,7 @@ function createFigures(object) {
 			}
 			break;
 	}
-	figuresBlock.innerHTML += `<div class="figures__item" data-figures-id='${object.id}' style="top: ${tempY+'px'}; left: ${tempX+'px'};">${tempSrc}</div>`;
+	figuresBlock.innerHTML += `<div class="${figClass}" data-figures-id='${object.id}' style="top: ${tempY+'px'}; left: ${tempX+'px'};">${tempSrc}</div>`;
 	setTimeout(()=>{
 		$('.figures').children('[data-figures-id=' + object.id + ']').children("i").css("transform","rotateY(0deg)");
 	},10)
@@ -1073,7 +1106,12 @@ function kingCheck1(kingX,kingY,testBoard,ax,ay,status) {
 								}
 							}
 							return;
-						case "pawn":
+						case "king":
+							if (Math.abs(ax) < 2 && Math.abs(ay) < 2 ) {
+								check = 1;
+							}
+							return;
+						default:
 							return;
 						
 						
@@ -1100,13 +1138,18 @@ function kingCheck1(kingX,kingY,testBoard,ax,ay,status) {
 								}
 							}
 							return;
-						case "pawn":
+						case "king":
+							if (Math.abs(ax) < 2 && Math.abs(ay) < 2 ) {
+								check = 1;
+							}
+							return;
+						default:
 							return;
 						
 					}
 				}
 			}else {
-				break;
+				return;
 			}
 			
 		}
@@ -1142,31 +1185,13 @@ function kingCheck2(kingX,kingY,testBoard,ax,ay,status) {
 }
 //проверка пешек
 function kingCheck3(kingX,kingY,testBoard,ax,ay,status) {
-	if (status == true ) {
-		console.log("in func")
-		console.log("kingX+ax",kingX+ax)
-		console.log("kingY+ay",kingY+ay)
-	}
 	if (((kingX+ax)<9 && (kingX+ax)>0)
 		&&
 		((kingY+ay)<9 && (kingY+ay)>0)
 	)
 	{
-		if (status == true ) {
-			console.log("in if")
-			console.log("ax",ax,"ay",ay)
-		}
-
 		if (typeof(testBoard[kingY+ay][kingX+ax]) == "object") {
-			if (status == true ) {
-				console.log("in obj")
-			}
-
 			if(testBoard[kingY+ay][kingX+ax].color != testBoard[kingY][kingX].color && testBoard[kingY+ay][kingX+ax].chessmen == "pawn") {
-
-				if (status == true ) {
-					console.log("in check")
-				}
 				check = 1;
 				if (status == true) {
 					attackFig = testBoard[kingY+ay][kingX+ax];
@@ -1205,42 +1230,6 @@ function kingPos(kingX,kingY,testBoard,status) {
 		kingCheck3(kingX,kingY,testBoard,-1,1,status)
 		kingCheck3(kingX,kingY,testBoard,1,1,status)
 	}
-
-	// if (testBoard[kingY][kingX].color == "white") {
-	// 		if (typeof(testBoard[kingY-1][kingX-1]) == "object") {
-	// 			if(testBoard[kingY-1][kingX-1].color != testBoard[kingY][kingX].color && testBoard[kingY-1][kingX-1].chessmen == "pawn") {
-	// 				check = 1;
-	// 				if (status == true) {
-	// 					attackFig = testBoard[kingY-1][kingX-1];
-	// 				}
-	// 			}
-	// 		}
-	// 	if (typeof(testBoard[kingY-1][kingX+1]) == "object") {
-	// 		if(testBoard[kingY-1][kingX+1].color != testBoard[kingY][kingX].color && testBoard[kingY-1][kingX+1].chessmen == "pawn") {
-	// 			check = 1;
-	// 			if (status == true) {
-	// 				attackFig = testBoard[kingY-1][kingX+1];
-	// 			}
-	// 		}
-	// 	}
-	// }else if(testBoard[kingY][kingX].color == "black"){
-	// 	if (typeof(testBoard[kingY+1][kingX-1]) == "object") {
-	// 		if(testBoard[kingY+1][kingX-1].color != testBoard[kingY][kingX].color && testBoard[kingY+1][kingX-1].chessmen == "pawn") {
-	// 			check = 1;
-	// 			if (status == true) {
-	// 				attackFig = testBoard[kingY+1][kingX-1];
-	// 			}
-	// 		}
-	// 	}
-	// 	if (typeof(testBoard[kingY+1][kingX+1]) == "object") {
-	// 		if(testBoard[kingY+1][kingX+1].color != testBoard[kingY][kingX].color && testBoard[kingY+1][kingX+1].chessmen == "pawn") {
-	// 			check = 1;
-	// 			if (status == true) {
-	// 				attackFig = testBoard[kingY+1][kingX+1];
-	// 			}
-	// 		}
-	// 	}
-	// }
 }
 
 //проверка на пат если противник не может ходить
@@ -1325,6 +1314,11 @@ $(".grid__cell").click(function(){
 	if(turnColor == userColor && game.mate == false) {
 		gridCordX = parseInt($(this).attr('data-cord').substr(0,1));
 	 	gridCordY = parseInt($(this).attr('data-cord').substr(-1,1));
+
+	 	if (selectedFigures == board[gridCordY][gridCordX]) {
+			reset()
+	 		return;
+		}
 	 	console.log('gridCordX: '+gridCordX+'\ngridCordY: '+gridCordY);
 	 	console.log("selected figure", board[gridCordY][gridCordX])
 	 	//проверка на возможность хода
@@ -1336,6 +1330,8 @@ $(".grid__cell").click(function(){
 
 			 	//формирования объекта последнего хода для backend
 			 	lastMove = {
+					 color: selectedFigures.color,
+					 chessmen: selectedFigures.chessmen,
 					 type: v.type,
 					 from: {
 						 x: selectedFigures.x,
@@ -1353,6 +1349,7 @@ $(".grid__cell").click(function(){
 					var newFigId = board[gridCordY][gridCordX].id;
 					lastMove.newFigId = newFigId;
 					lastMove.killChessmen = board[gridCordY][gridCordX].chessmen;
+					lastMove.killColor = board[gridCordY][gridCordX].color;
 
 	 				$('.figures').children('[data-figures-id="'+newFigId+'"]').children("i").css("transform","rotateY(90deg)");
 					setTimeout(()=>{
@@ -1389,6 +1386,7 @@ $(".grid__cell").click(function(){
 					var rookId = board[v.y][v.rookXFrom].id;
 					lastMove.newFigId = rookId;
 					lastMove.rookXTo = v.rookXTo;
+					lastMove.rookXFrom = v.rookXFrom;
 
 					 //перемещение ладьи
 					board[v.y][v.rookXTo] = board[v.y][v.rookXFrom];
@@ -1406,6 +1404,7 @@ $(".grid__cell").click(function(){
 
 		 			//визуальное перемещение короля
 					$('.figures').children('[data-figures-id="'+selFigId+'"]').css({"top": (gridCordY*100-100)+"px", "left": ((v.x)*100-100)+"px"});
+					soundCastling.play()
 	 			}
 
 			 	if (selectedFigures.chessmen == "king" || v.type == "castling") {
@@ -1414,11 +1413,9 @@ $(".grid__cell").click(function(){
 						x: gridCordX,
 						y: gridCordY
 					};
-					console.log(userKing)
-					lastMove.userKing = userKing;
-					soundCastling.play()
-				}
 
+					lastMove.userKing = userKing;
+				}
 
 	 			if (selectedFigures.start == 1) {
 					selectedFigures.start = 0;
@@ -1462,7 +1459,6 @@ $(".grid__cell").click(function(){
 					promise.then((selectChessmen)=>{
 						$(".transform-pawn").parent().fadeOut(400);
 
-						console.log(selectChessmen)
 						board[gridCordY][gridCordX].chessmen = selectChessmen;
 						board[gridCordY][gridCordX].x = gridCordX;
 						board[gridCordY][gridCordX].y = gridCordY;
@@ -1581,11 +1577,11 @@ $(".grid__cell").click(function(){
 							//проверка можем если не можем побить атакующую фигуру
 							if (defVariations.some(o => o.x === attackFig.x && o.y === attackFig.y && o.type == "kill") == false) {
 								if (attackFig.chessmen == "knight") {
-									textFotTextAlert = "Вы сделали мат";
+									textFotTextAlert = "Вы поставили мат";
 									lastMove.mate = true;
 								}
 								if (attackFig.chessmen == "pawn") {
-									textFotTextAlert = "Вы сделали мат";
+									textFotTextAlert = "Вы поставили мат";
 									lastMove.mate = true;
 								}
 
@@ -1610,7 +1606,7 @@ $(".grid__cell").click(function(){
 								overlapDef(attackAngle.x, attackAngle.y);
 
 								if (overlapDefCells == 0) {
-									textFotTextAlert = "Вы сделали мат";
+									textFotTextAlert = "Вы поставили мат";
 									lastMove.mate = true;
 								}
 
@@ -1801,6 +1797,104 @@ $(".palette__item").click(function (){
 });
 
 
+function lastMovePhantom() {
+	var phantom1Fig = {
+		x: game.lastMove.from.x,
+		y: game.lastMove.from.y,
+		color: game.lastMove.color,
+		chessmen: game.lastMove.chessmen
+	}
+	$('.figures').children('[data-figures-id="'+game.lastMove.selFigId+'"]').css("opacity", 0)
+
+	createFigures(phantom1Fig, "figures__phantom figures__phantom1");
+
+	if (game.lastMove.transformation != undefined) {
+		$('.figures__phantom1').addClass("animate__animated animate__flipOutY")
+
+		var phantom4Fig = {
+			x: game.lastMove.to.x,
+			y: game.lastMove.to.y,
+			color: game.lastMove.color,
+			chessmen: game.lastMove.transformationChessmen
+		}
+
+		setTimeout(()=>{
+			createFigures(phantom4Fig, "figures__phantom figures__phantom4");
+
+			setTimeout(()=>{
+				$('.figures__phantom4').remove();
+			},500)
+
+			setTimeout(()=>{
+				$('.figures').children('[data-figures-id="'+game.lastMove.selFigId+'"]').css("opacity", 1)
+			},300)
+
+		},500)
+	}else {
+		setTimeout(()=>{
+			$('.figures__phantom1').css({"top": (game.lastMove.to.y*100-100)+"px", "left": (game.lastMove.to.x*100-100)+"px"});
+
+			setTimeout(()=>{
+				$('.figures').children('[data-figures-id="'+game.lastMove.selFigId+'"]').css("opacity", 1)
+			},500)
+
+			setTimeout(()=>{
+
+				$('.figures__phantom1').remove();
+			},700)
+		},700)
+	}
+
+
+
+	if (game.lastMove.type == "kill") {
+		var phantom2Fig = {
+			x: game.lastMove.to.x,
+			y: game.lastMove.to.y,
+			color: game.lastMove.killColor,
+			chessmen: game.lastMove.killChessmen
+		}
+		createFigures(phantom2Fig, "figures__phantom figures__phantom2");
+
+		setTimeout(()=>{
+			//$('.figures__phantom2').css({"top": (game.lastMove.to.y*100-100)+"px", "left": (-200)+"px"});
+
+			$('.figures__phantom2').addClass("animate__animated animate__rollOut")
+			setTimeout(()=>{
+				$('.figures__phantom2').remove();
+			},700)
+		},900)
+
+	}
+
+	if (game.lastMove.type == "castling") {
+		var phantom3Fig = {
+			x: game.lastMove.rookXFrom,
+			y: game.lastMove.to.y,
+			color: game.lastMove.color,
+			chessmen: "rook"
+		}
+		createFigures(phantom3Fig, "figures__phantom figures__phantom3");
+
+		$('.figures').children('[data-figures-id="'+game.lastMove.newFigId+'"]').css("opacity", 0)
+
+		setTimeout(()=>{
+			$('.figures__phantom3').css({"top": (game.lastMove.to.y*100-100)+"px", "left": (game.lastMove.rookXTo*100-100)+"px"});
+
+			setTimeout(()=>{
+				$('.figures').children('[data-figures-id="'+game.lastMove.newFigId+'"]').css("opacity", 1)
+			},500)
+
+			setTimeout(()=>{
+				$('.figures__phantom3').remove();
+			},700)
+		},700)
+	}
+
+
+
+}
+
 //наведение на блок последнего хода
 $(".moves").click(()=>{
 	var moves__numbersFrom = $(".moves__numbers").attr("data-last-cord-from")
@@ -1808,9 +1902,11 @@ $(".moves").click(()=>{
 	if (moves__numbersFrom != "") {
 		$('.grid__row').children('[data-cord="'+moves__numbersFrom+'"]').addClass("grid__cell_lastMove");
 		$('.grid__row').children('[data-cord="'+moves__numbersTo+'"]').addClass("grid__cell_lastMove");
+
+		lastMovePhantom()
+
 	}
 	setTimeout(()=>{
-		console.log("fffff")
 		$(".grid__cell").removeClass("grid__cell_lastMove");
 	},3000)
 })

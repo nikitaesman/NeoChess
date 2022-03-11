@@ -81,6 +81,7 @@ export function  gameRoutes(app,connection,lobbys,games,gamesLoop,str_rand)  {
                                         if (games[gameId].players[0].timeMoves >= matchLonger) {
                                             games[gameId].mate = true
                                             games[gameId].winner = games[gameId].players[1].id
+                                            games[gameId].timeLose = games[gameId].players[0].id
                                             games[gameId].timeEnd = moment().tz("Europe/Moscow").format("YYYY-MM-DD HH:mm:ss")
 
                                             clearInterval(gamesLoop[gameId])
@@ -91,6 +92,7 @@ export function  gameRoutes(app,connection,lobbys,games,gamesLoop,str_rand)  {
                                         } else if (games[gameId].players[1].timeMoves >= matchLonger) {
                                             games[gameId].mate = true
                                             games[gameId].winner = games[gameId].players[0].id
+                                            games[gameId].timeLose = games[gameId].players[1].id
                                             games[gameId].timeEnd = moment().tz("Europe/Moscow").format("YYYY-MM-DD HH:mm:ss")
 
                                             clearInterval(gamesLoop[gameId])
@@ -746,43 +748,5 @@ export function  gameRoutes(app,connection,lobbys,games,gamesLoop,str_rand)  {
             killed: 0
         }
     ]
-
-
-    figures = [
-        {
-            chessmen: "king",
-            color: "black",
-            x: 5,
-            y: 1,
-            start: 0,
-            killed: 0
-        },
-        {
-            chessmen: "king",
-            color: "white",
-            x: 5,
-            y: 8,
-            start: 0,
-            killed: 0
-        },
-        {
-            chessmen: "pawn",
-            color: "white",
-            x: 5,
-            y: 3,
-            start: 0,
-            killed: 0
-        },
-        {
-            chessmen: "pawn",
-            color: "white",
-            x: 4,
-            y: 3,
-            start: 0,
-            killed: 0
-        }
-    ]
-
-
 
 }

@@ -944,27 +944,35 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
             var data = req.body
             var lobbyId = data.lobbyId
 
-            if(lobbys[lobbyId].guest == "") {
-                lobbys[lobbyId].guest = req.session.user.id
+            if (lobbys[lobbyId] != undefined) {
+                if (lobbys[lobbyId].guest == "") {
+                    lobbys[lobbyId].guest = req.session.user.id
 
-                var task = {
-                    type: "lobby",
-                    id: lobbyId
-                }
-
-                var taskStr = JSON.stringify(task)
-
-                var queryLobby = `UPDATE users SET task = '${taskStr}' WHERE id = ${req.session.user.id}`
-
-                connection.query(queryLobby, function(err) {
-                    if (err) {
-                        console.log(err)
-                        return
+                    var task = {
+                        type: "lobby",
+                        id: lobbyId
                     }
-                    res.status(200).json({type:"successful", message: "Вы успешно подключились к лобби",  lobbyId: lobbyId})
-                })
+
+                    var taskStr = JSON.stringify(task)
+
+                    var queryLobby = `UPDATE users SET task = '${taskStr}' WHERE id = ${req.session.user.id}`
+
+                    connection.query(queryLobby, function (err) {
+                        if (err) {
+                            console.log(err)
+                            return
+                        }
+                        res.status(200).json({
+                            type: "successful",
+                            message: "Вы успешно подключились к лобби",
+                            lobbyId: lobbyId
+                        })
+                    })
+                } else {
+                    res.status(200).json({type: "error", message: "Лобби переполненно"})
+                }
             }else {
-                res.status(200).json({type:"error", message: "Лобби переполненно"})
+                res.status(200).json({type: "error", message: "Лобби было удаленно"})
             }
 
 

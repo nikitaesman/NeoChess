@@ -292,6 +292,7 @@ html {
 	border-radius: 20px;
 	box-shadow: 5px 5px 50px rgba(0,0,0,0.15);
 	position: relative;
+	overflow: hidden;
 }
 
 .board {
@@ -386,6 +387,10 @@ html {
 	transform: rotateX(180deg) !important;
 }
 
+.rotateBoard .figures .figures__phantom{
+	transform: rotateX(180deg) !important;
+}
+
 .rotateBoard  .symbol__abc {
 	top: -45px;
 	bottom: inherit;
@@ -402,6 +407,17 @@ html {
 	height: 100px;
 	justify-content: center;
   	transition: all 0.7s;
+}
+
+.figures__phantom {
+	display: flex;
+	position: absolute;
+	width: 100px;
+	z-index: 2;
+	height: 100px;
+	justify-content: center;
+	opacity: 0.6;
+	transition: all 0.7s;
 }
 
 
@@ -1100,6 +1116,7 @@ html {
 }
 
 .moves__numbers {
+	position: relative;
 	display: flex;
 	align-items: center;
 	font-weight: 700;
@@ -1126,6 +1143,7 @@ html {
 }
 
 
+
 .moves__numbers:hover {
 	box-shadow: -5px -5px 10px #FFFFFF00,
 	6px 6px 10px rgba(174, 174, 192, 0.0),
@@ -1134,12 +1152,32 @@ html {
 	transition: 0.5s ease;
 }
 
+.moves__chessmen {
+	position: absolute;
+	top: 10px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	color: #93BDBA;
+	font-size: 10px;
+}
+
+.moves__type {
+	position: absolute;
+	bottom: 10px;
+	left: 0px;
+	width: 100%;
+	text-align: center;
+	color: #93BDBA;
+	font-size: 10px;
+}
+
 .moves__from {
 	/*color: #00BDC9;*/
 }
 
 .moves__numbers span {
-	/background-color: #CCFBF8;
+	background-color: #CCFBF8;
 	margin: 0px 5px;
 }
 
@@ -2142,7 +2180,7 @@ html {
 
 
 .wrap__nickname {
-
+	min-width: 120px;
 }
 
 .wrap__elem_lose .wrap__versus {
@@ -2598,6 +2636,7 @@ html {
 }
 
 .game-menu__nickname {
+	min-width: 200px;
 	background-color: #513FBF;
    	text-align: center;
 	text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
@@ -2612,7 +2651,7 @@ html {
 }
 
 .game-menu__nickname_right {
-
+	cursor: pointer;
 }
 
 .game-menu__vs {
@@ -3216,6 +3255,16 @@ html {
 	margin-top: 30px;
 	background: #E3E6ED;
 	border-radius: 10px;
+	position: relative;
+}
+
+.control__date {
+	position: absolute;
+	top: 10px;
+	right: 10px;
+	color: #8780C7;
+	font-size: 12px;
+
 }
 
 .control__head {
@@ -3225,7 +3274,7 @@ html {
 }
 
 .control__points {
-
+	font-size: 15px;
 }
 
 .control__points li {

@@ -65,6 +65,10 @@ $(".online-collapse").click(()=>{
 
 })
 
+$(".game-menu__nickname_right").click(()=>{
+	$(".online").toggleClass("online__opened");
+})
+
 
 
 $(document).mouseup( function(e){ // событие клика по веб-документу
@@ -668,7 +672,7 @@ function getMinimizedTime(gameTimeLength) {
 			minutes = "0"+minutes
 		}
 
-		return days+"."+months+"."+years+"</br> "+hours+":"+minutes
+		return hours+":"+minutes+"</br> "+days+"."+months+"."+years
 	}
 
 
@@ -685,8 +689,7 @@ function myMatches() {
 						var matchPlayers = match.players
 
 						var gameMinimizedTime = getMinimizedTime(match.duration)
-
-						var matchDateStart = getMinimizedDate(new Date(match.timeStart))
+						var matchDateStart = getMinimizedDate(new Date(new Date(match.timeStart).toLocaleString()))
 
 
 						var matchPlayersUser;
@@ -1065,6 +1068,9 @@ function createGame(lobbyId) {
 		{
 			lobbyId: lobbyId
 		}, function (data) {
+			if (data.type == "successful") {
+
+			}
 			addTextAlert( data.message)
 		});
 }

@@ -18,7 +18,6 @@ import {getRoutes} from "./src/getRoutes.js";
 
 
 
-
 const __dirname = path.resolve()
 const PORT = process.env.PORT ?? Config.__server.port
 const app = express()
