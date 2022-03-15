@@ -235,6 +235,16 @@ $("#authorization").submit(function(e){
 	);
 });
 
+//authorization vkontakte
+$('.login__item_vk').click(()=>{
+	window.location.href = '/passport/auth/vk';
+})
+
+//authorization google
+$('.login__item_google').click(()=>{
+	window.location.href = '/passport/auth/google';
+})
+
 //authorization logout
 $(".user__sign-out").on('click', ()=> {
 	$.post('/auth/out',
@@ -332,7 +342,34 @@ $("#regPassword2").on('input',()=>{
 	check2Pass();
 });
 
+$(".user__nickname").click(()=>{
+	$('#change').arcticmodal();
+})
+
+
+//change nickname
+$("#change").submit(function(e){
+	e.preventDefault();
+	let changeNick = $("#changeNick").val().trim();
+
+	$.post('/change/nick',
+		{
+			nick: changeNick
+		},
+		function(data) {
+			if(data.type == "successful") {
+				$('#change').arcticmodal('close');
+				addTextAlert(data.message)
+			}else {
+				addTextAlert(data.message)
+			}
+		}
+	);
+});
+
+
 var invitesCount = 0;
+
 function checkInvites() {
 	$.post('/invites',
 		{
@@ -686,10 +723,12 @@ function myMatches() {
 				if (data.matchesArr.length > 0) {
 					document.querySelector(".wrap__list").innerHTML= "";
 					for (var match of data.matchesArr) {
-						var matchPlayers = match.players
+						var matchPlayers = match.players;
 
-						var gameMinimizedTime = getMinimizedTime(match.duration)
-						var matchDateStart = getMinimizedDate(new Date(new Date(match.timeStart).toLocaleString()))
+						var gameMinimizedTime = getMinimizedTime(match.duration);
+						var localDateObj = new Date(match.timeStart);
+
+						var matchDateStart = getMinimizedDate(localDateObj);
 
 
 						var matchPlayersUser;
@@ -833,6 +872,9 @@ function myMatches() {
 											<div class="wrap__mode">
 												${modeCode}
 											</div>
+											<a class="wrap__replay" title="Посмотреть доску в конце матча?" target="_blank" href="${"/replay?gameId="+match.id}">
+												<img src="img/icons/play.png" alt="Посмотреть доску в конце матча?">
+											</a>
 										</div>
 										<div class="d-flex">
 											<div class="wrap__icon">
@@ -1190,7 +1232,7 @@ function myFriends() {
 					<div class="friends__player animate__animated animate__fadeIn" data-friend-id="${player.id}">
 						<div class="friends__logo">
 							<i class="icon-knight"></i>
-							<div class="friends__status ${player.online ? 'friends__status_on' : 'friends__status_off'}"></div>
+							<div class="friends__status ${player.online == true ? 'friends__status_on' : 'friends__status_off'}"></div>
 						</div>
 						<div class="friends__nickname">${player.nick}</div>
 						<div class="friends__stat">

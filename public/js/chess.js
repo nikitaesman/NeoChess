@@ -51,7 +51,6 @@ $(document).ready(function (){
 });
 
 var board = "";
-
 var user;
 var game = "";
 var oldGameMovesCount = -1;
@@ -130,7 +129,7 @@ function soundVolumeChange() {
 	},1000)
 
 	soundStep.volume=volumeRange/100;
-	soundCheck.volume=volumeRange/100;
+	soundCheck.volume=volumeRange/100-0.3;
 	soundTransform.volume=volumeRange/100;
 	soundKill.volume=volumeRange/100;
 	soundCastling.volume=volumeRange/100;
@@ -1797,14 +1796,15 @@ $(".palette__item").click(function (){
 });
 
 
-function lastMovePhantom() {
+function lastMovePhantom(lastMoveObj) {
+	lastMoveObj = JSON.parse(JSON.stringify(lastMoveObj))
 	var phantom1Fig = {
-		x: game.lastMove.from.x,
-		y: game.lastMove.from.y,
-		color: game.lastMove.color,
-		chessmen: game.lastMove.chessmen
+		x: lastMoveObj.from.x,
+		y: lastMoveObj.from.y,
+		color: lastMoveObj.color,
+		chessmen: lastMoveObj.chessmen
 	}
-	$('.figures').children('[data-figures-id="'+game.lastMove.selFigId+'"]').css("opacity", 0)
+	$('.figures').children('[data-figures-id="'+lastMoveObj.selFigId+'"]').css("opacity", 0)
 
 	createFigures(phantom1Fig, "figures__phantom figures__phantom1");
 
@@ -1812,10 +1812,10 @@ function lastMovePhantom() {
 		$('.figures__phantom1').addClass("animate__animated animate__flipOutY")
 
 		var phantom4Fig = {
-			x: game.lastMove.to.x,
-			y: game.lastMove.to.y,
-			color: game.lastMove.color,
-			chessmen: game.lastMove.transformationChessmen
+			x: lastMoveObj.to.x,
+			y: lastMoveObj.to.y,
+			color: lastMoveObj.color,
+			chessmen: lastMoveObj.transformationChessmen
 		}
 
 		setTimeout(()=>{
@@ -1826,16 +1826,16 @@ function lastMovePhantom() {
 			},500)
 
 			setTimeout(()=>{
-				$('.figures').children('[data-figures-id="'+game.lastMove.selFigId+'"]').css("opacity", 1)
+				$('.figures').children('[data-figures-id="'+lastMoveObj.selFigId+'"]').css("opacity", 1)
 			},300)
 
 		},500)
 	}else {
 		setTimeout(()=>{
-			$('.figures__phantom1').css({"top": (game.lastMove.to.y*100-100)+"px", "left": (game.lastMove.to.x*100-100)+"px"});
+			$('.figures__phantom1').css({"top": (lastMoveObj.to.y*100-100)+"px", "left": (lastMoveObj.to.x*100-100)+"px"});
 
 			setTimeout(()=>{
-				$('.figures').children('[data-figures-id="'+game.lastMove.selFigId+'"]').css("opacity", 1)
+				$('.figures').children('[data-figures-id="'+lastMoveObj.selFigId+'"]').css("opacity", 1)
 			},500)
 
 			setTimeout(()=>{
@@ -1847,18 +1847,16 @@ function lastMovePhantom() {
 
 
 
-	if (game.lastMove.type == "kill") {
+	if (lastMoveObj.type == "kill") {
 		var phantom2Fig = {
-			x: game.lastMove.to.x,
-			y: game.lastMove.to.y,
-			color: game.lastMove.killColor,
-			chessmen: game.lastMove.killChessmen
+			x: lastMoveObj.to.x,
+			y: lastMoveObj.to.y,
+			color: lastMoveObj.killColor,
+			chessmen: lastMoveObj.killChessmen
 		}
 		createFigures(phantom2Fig, "figures__phantom figures__phantom2");
 
 		setTimeout(()=>{
-			//$('.figures__phantom2').css({"top": (game.lastMove.to.y*100-100)+"px", "left": (-200)+"px"});
-
 			$('.figures__phantom2').addClass("animate__animated animate__rollOut")
 			setTimeout(()=>{
 				$('.figures__phantom2').remove();
@@ -1867,22 +1865,22 @@ function lastMovePhantom() {
 
 	}
 
-	if (game.lastMove.type == "castling") {
+	if (lastMoveObj.type == "castling") {
 		var phantom3Fig = {
-			x: game.lastMove.rookXFrom,
-			y: game.lastMove.to.y,
-			color: game.lastMove.color,
+			x: lastMoveObj.rookXFrom,
+			y: lastMoveObj.to.y,
+			color: lastMoveObj.color,
 			chessmen: "rook"
 		}
 		createFigures(phantom3Fig, "figures__phantom figures__phantom3");
 
-		$('.figures').children('[data-figures-id="'+game.lastMove.newFigId+'"]').css("opacity", 0)
+		$('.figures').children('[data-figures-id="'+lastMoveObj.newFigId+'"]').css("opacity", 0)
 
 		setTimeout(()=>{
-			$('.figures__phantom3').css({"top": (game.lastMove.to.y*100-100)+"px", "left": (game.lastMove.rookXTo*100-100)+"px"});
+			$('.figures__phantom3').css({"top": (lastMoveObj.to.y*100-100)+"px", "left": (lastMoveObj.rookXTo*100-100)+"px"});
 
 			setTimeout(()=>{
-				$('.figures').children('[data-figures-id="'+game.lastMove.newFigId+'"]').css("opacity", 1)
+				$('.figures').children('[data-figures-id="'+lastMoveObj.newFigId+'"]').css("opacity", 1)
 			},500)
 
 			setTimeout(()=>{
@@ -1890,9 +1888,6 @@ function lastMovePhantom() {
 			},700)
 		},700)
 	}
-
-
-
 }
 
 //наведение на блок последнего хода
@@ -1903,7 +1898,7 @@ $(".moves").click(()=>{
 		$('.grid__row').children('[data-cord="'+moves__numbersFrom+'"]').addClass("grid__cell_lastMove");
 		$('.grid__row').children('[data-cord="'+moves__numbersTo+'"]').addClass("grid__cell_lastMove");
 
-		lastMovePhantom()
+		lastMovePhantom(game.lastMove)
 
 	}
 	setTimeout(()=>{

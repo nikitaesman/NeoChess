@@ -6,6 +6,38 @@ export function getRoutes(app, connection, lobbys, games, str_rand, __dirname) {
         res.sendFile(path.resolve(__dirname, "public", "index.html"))
     })
 
+
+    app.get('/replay', (req, res)=> {
+        if (req.session.user) {
+            var gameId = req.query.gameId
+
+            const queryGame = `SELECT players FROM matches WHERE id = '${gameId}'`
+
+            connection.query(queryGame, (err, result) => {
+                if (err) {
+                    console.log(err)
+                    return
+                }
+
+                if (result.length > 0) {
+                    var playersObj = JSON.parse(result[0].players)
+
+                    if (playersObj[0].id == req.session.user.id) {
+                        res.sendFile(path.resolve(__dirname, "public", "pages", "replay.html"))
+                    }else if (playersObj[1].id == req.session.user.id){
+                        res.sendFile(path.resolve(__dirname, "public", "pages", "replay.html"))
+                    }else {
+                        res.sendFile(path.resolve(__dirname, "public", "pages", "404.html"))
+                    }
+                }else {
+                    res.sendFile(path.resolve(__dirname, "public", "pages", "404.html"))
+                }
+            })
+
+        }else {
+            res.sendFile(path.resolve(__dirname, "public", "pages", "404.html"))
+        }
+    })
     app.get('/game', (req, res)=>{
         if(req.session.user) {
             const queryUser = `SELECT * FROM users WHERE id = '${req.session.user.id}'`
@@ -96,6 +128,7 @@ export function getRoutes(app, connection, lobbys, games, str_rand, __dirname) {
         }
 
     })
+
 
 
 //The 404 Route (ALWAYS Keep this as the last route)

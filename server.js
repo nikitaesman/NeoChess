@@ -1,11 +1,15 @@
-import express from 'express'
 import chalk from 'chalk'
 import path from 'path'
 import mysql from 'mysql'
 import nodemailer from 'nodemailer'
 import bcrypt from 'bcryptjs'
+import express from 'express'
 import session from 'express-session'
 import cookieParser from 'cookie-parser'
+
+import passport from 'passport'
+import {Strategy as GoogleStrategy} from "passport-google-oauth2";
+
 import moment from 'moment-timezone'
 moment.locale('ru')
 
@@ -15,6 +19,7 @@ import {emailConfirm, emailRecovery} from "./src/confirm_mail.js"
 import {gameRoutes} from './src/gameRoutes.js'
 import {indexRoutes} from './src/indexRoutes.js'
 import {getRoutes} from "./src/getRoutes.js";
+import {passportRoutes} from "./src/passport.js";
 
 
 
@@ -37,6 +42,8 @@ app.use(session({
 	saveUninitialized: true,
 	secret: Config.__server.secret
 }))
+app.use(passport.initialize())
+app.use(passport.session())
 
 
 
@@ -76,11 +83,20 @@ var gamesLoop = []
 
 
 
+
+
+
+
+
+
+passportRoutes(app, connection, str_rand)
+
 getRoutes(app, connection, lobbys, games, str_rand, __dirname)
 
 indexRoutes(app, connection, lobbys, games, str_rand)
 
 gameRoutes(app, connection, lobbys, games, gamesLoop, str_rand)
+
 
 
 

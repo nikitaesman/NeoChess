@@ -182,8 +182,13 @@
 
     .moves {
         transform: scale(0.6);
-        margin: 0px -780px 125px 795px;;
+        margin: 0px -760px 100px 820px;
     }
+
+    .moves__title {
+        font-size: 13px;
+    }
+
 
     .stat {
         margin-bottom: -20px;
@@ -307,10 +312,19 @@
     }
 
     .game-settings {
-        transform: scale(0.8);
+        transform: scale(0.7);
         flex-direction: row;
         width: 125%;
         margin: -15% 0px 0px 0px;
+    }
+
+
+    .game-mode__title {
+        display: none;
+    }
+
+    .timer__title {
+        display: none;
     }
 
     .settings {
@@ -498,6 +512,10 @@
 
     .game-settings {
         margin: -13% 0px 0px 0px;
+    }
+
+    .settings {
+        margin-top: 30px;
     }
 
     .stat {
@@ -736,14 +754,6 @@
     .game-settings {
         transform: scale(0.65);
         margin: -15% 0px 0px 0px;
-    }
-
-    .game-mode__title {
-        display: none;
-    }
-
-    .timer__title {
-        display: none;
     }
 
     .settings {

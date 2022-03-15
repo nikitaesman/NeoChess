@@ -70,7 +70,7 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
 
                             var friendLastOnline = new Date(results[0].last_online)
 
-                            if (nowDate-friendLastOnline < 300000) {
+                            if (nowDate-friendLastOnline < 60000) {
                                 friendsOnline.push({
                                     id: results[0].id,
                                     nick: results[0].nick,
@@ -124,7 +124,7 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
 
                             var friendLastOnline = new Date(results[0].last_online)
                             var onlineFriends = false
-                            if (nowDate - friendLastOnline < 300000) {
+                            if ((nowDate - friendLastOnline) < 60000) {
                                 onlineFriends = true
                             }
 
@@ -475,9 +475,7 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
     app.post('/auth/log', function(req, res){
         var data = req.body
 
-
-
-        const query = `SELECT * FROM users WHERE email = '${data.email}'`
+        const query = `SELECT * FROM users WHERE email = '${data.email}' and type = "local"`
         // Use the connection
         connection.query(query, function(err, rows) {
             if(err) {
@@ -576,7 +574,7 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
 //recovery password
     app.post('/auth/recovery', function(req, res){
         var data = req.body
-        const query = `SELECT * FROM users WHERE email = '${data.email}'`
+        const query = `SELECT * FROM users WHERE email = '${data.email}' and type = "local"`
         // Use the connection
         connection.query(query, function(err, rows) {
             if (err) {
@@ -667,7 +665,7 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
     app.post('/auth/reg', function(req, res){
         var data = req.body
 
-        var query = `SELECT * FROM users WHERE email = '${data.email}'`
+        var query = `SELECT * FROM users WHERE email = '${data.email}' and type = 'local'`
         // Use the connection
         connection.query(query, function(err, rows) {
             if(err) {
@@ -711,6 +709,40 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
         });
 
     });
+
+    app.post('/change/nick', function(req, res){
+        if(req.session.user) {
+            var data = req.body
+
+            const queryChangeNickCheck = `SELECT id FROM users WHERE nick = '${data.nick}'`
+
+            connection.query(queryChangeNickCheck, (err, result)=>{
+                if (err) {
+                    console.log(err)
+                    return
+                }
+
+                if (result.length == 0) {
+
+                    const queryChangeNick = `UPDATE users SET nick = '${data.nick}' WHERE id = '${req.session.user.id}'`
+
+                    connection.query(queryChangeNick, (err, result)=> {
+                        if (err) {
+                            console.log(err)
+                            return
+                        }
+                        res.status(200).json({type:"successful", message: "Никнэйм успешно изменён"})
+                    })
+
+                }else {
+                    res.status(200).json({type:"error", message: `Никнэйм ${data.nick} уже занят`})
+                }
+            })
+
+        }else {
+            res.status(200).json({type:"error", message: "Вы не авторизированны"})
+        }
+    })
 
     app.post('/matchesHistory', function(req, res){
         if(req.session.user) {
@@ -1151,5 +1183,38 @@ export function indexRoutes(app,connection,lobbys,games,str_rand) {
             }
             res.status(200).send("Визит добавлен")
         })
+    })
+
+    app.post('/getGameInfo', function(req, res){
+        if(req.session.user) {
+            var data = req.body
+            var gameId = data.gameId
+
+            const queryGame = `SELECT * FROM matches WHERE id = '${gameId}'`
+
+            connection.query(queryGame, (err, result) => {
+                if (err) {
+                    console.log(err)
+                    return
+                }
+
+                if (result.length > 0) {
+                    var game = result[0]
+                    var board = JSON.parse(game.board)
+                    var players = JSON.parse(game.players)
+                    if (players[0].id == req.session.user.id) {
+                        var user = players[0]
+                    }else if (players[1].id == req.session.user.id) {
+                        var user = players[1]
+                    }
+
+                    res.status(200).json({type:"successful", board: board, user: user})
+                }else {
+                    res.status(200).json({type:"error", message: "Игра не найденна"})
+                }
+            })
+        }else {
+            res.status(200).json({type:"error", message: "Вы не авторизированны"})
+        }
     })
 }

@@ -38,7 +38,9 @@
 		<div class="container">
 			<div class="nav">
 				<div class="game-name">
-					<span>Neo</span>Chess <i class="icon-rook"></i>
+					<p class="game-name__text">
+						<span>Neo</span>Chess <i class="icon-rook"></i>
+					</p>
 				</div>
 				<div class="nav__friends">
 					<div class="nav__friends-icon">
@@ -75,20 +77,26 @@
 					</div>
 				</div>
 				<div class="nav__login">
-					Login
+					<p class="nav__login-text">Login</p>
 				</div>
 			</div>
 		</div>
 		<div class="wrap">
 			<div class="wrap__start">
-				<button class="start__btn">Play</button>
+				<div class="start__btn">
+					<div class="start__btn-text">Play</div>
+				</div>
 				<div class="wrap__variables">
 					<button class="wrap__random-play">Playing with a random opponent</button>
 					<button class="wrap__friend-play">Playing with a friend</button>
 				</div>
 			</div>
 			<div class="wrap__history">
-				<div class="wrap__history-btn">Match History</div>
+				<div class="wrap__history-btn">
+					<div class="wrap__history-text">
+						Match History
+					</div>
+				</div>
 				<div class="wrap__list"></div>
 			</div>
 		</div>
@@ -239,6 +247,9 @@
 	</div>
 
 
+<!--	<a style="position: absolute; top: 20px; left: 30px; z-index: 1000;"	href="/passport/auth/google">Authenticate whith Google</a>-->
+
+
 
 
 
@@ -247,7 +258,7 @@
 	<div class="alerts"></div>
 
 	<div class="version">
-		V: beta 0.29
+		V: beta 0.30
 	</div>
 
 	<div class="inGameModal">
@@ -270,6 +281,32 @@
 			</div>
 			<div class="control__pages">
 				<div class="control__items">
+					<div class="control__item" data-version="beta 0.30">
+						<div class="control__date">15.03.2022</div>
+						<div class="control__head">
+							Обновление beta 0.30 новые фитчи?
+						</div>
+						<ul class="control__points">
+							<li>
+								Исправлен баг "невидимых фигур" при анимации последнего хода
+							</li>
+							<li>
+								Исправлены мелкие баги backend
+							</li>
+							<li>
+								Отрегулироваана громкость "слишком режущих звуков"
+							</li>
+							<li>
+								Добавленна функция смены Никнэйма
+							</li>
+							<li>
+								Добавленны функции авторизации по Google Api и Vk Api
+							</li>
+							<li>
+								Добавленна функция просмотра последней доски матча
+							</li>
+						</ul>
+					</div>
 					<div class="control__item" data-version="beta 0.29">
 						<div class="control__date">11.03.2022</div>
 						<div class="control__head">
@@ -296,6 +333,9 @@
 							</li>
 							<li>
 								Исправлен баг "вечно неправильного времени матча"
+							</li>
+							<li>
+								Исправлены сообщения в конце матча в режимах с ограниченным временем
 							</li>
 							<li>
 								Добавленна фитча: при повторном нажатии на фигуру убирается подсветка возможных ходов
@@ -448,6 +488,22 @@
 				   autocomplete="on"
 				   required>
 			<button type="submit" class="login__button">Recovery</button>
+		</form>
+	</div>
+	<div style="display: none;">
+		<form class="box-modal login" id="change">
+			<div class="login__greet">Change Nickname</div>
+			<div class="login__forgot" style="width: 250px">
+				Введите новый никнэйм
+			</div>
+			<input type="text"
+				   placeholder="Nickname"
+				   id="changeNick"
+				   pattern="[a-zA-Z\d]{4,12}"
+				   title="Nickname must contain from 4 to 12 characters and include only letters and numbers of the Latin alphabet!"
+				   autocomplete="off"
+				   required>
+			<button type="submit" class="login__button">Change</button>
 		</form>
 	</div>
 	<div style="display: none;">

@@ -1,3 +1,5 @@
+import * as Config from './config.js'
+
 function emailConfirm(nick, hash) {
     let email = `<div class="es-wrapper-color">
     <!--[if gte mso 9]>
@@ -116,7 +118,7 @@ function emailConfirm(nick, hash) {
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td align="center" class="esd-block-button es-p10t es-p10b"><span class="es-button-border" style="font-family: 'Rubik', sans-serif; color: #414246; border-radius: 6px; padding: 20px; width: 50%; display: block; background: #745ff2;"><a href='${'http://ives-games.ru/activeted?hash='+hash}' class="es-button" target="_blank" style="border-radius: 6px; border-left-width: 5px; border-right-width: 5px; text-decoration: none; color: #fff; font-weight: 700; display: block; background: #745ff2; border-color: #745ff2;">CONFIRM YOUR EMAIL</a></span></td>
+                                                            <td align="center" class="esd-block-button es-p10t es-p10b"><span class="es-button-border" style="font-family: 'Rubik', sans-serif; color: #414246; border-radius: 6px; padding: 20px; width: 50%; display: block; background: #745ff2;"><a href='${Config.__server.domain+'/activeted?hash='+hash}' class="es-button" target="_blank" style="border-radius: 6px; border-left-width: 5px; border-right-width: 5px; text-decoration: none; color: #fff; font-weight: 700; display: block; background: #745ff2; border-color: #745ff2;">CONFIRM YOUR EMAIL</a></span></td>
                                                         </tr>
                                                         <tr>
                                                             <td align="center" class="esd-block-text es-p5t es-p5b es-p40r es-p40l es-m-p0r es-m-p0l">
@@ -359,7 +361,7 @@ function emailRecovery(nick, hash) {
                                                             </td>
                                                         </tr>
                                                         <tr>
-                                                            <td align="center" class="esd-block-button es-p10t es-p10b"><span class="es-button-border" style="font-family: 'Rubik', sans-serif; color: #414246; border-radius: 6px; padding: 20px; width: 50%; display: block; background: #745ff2;"><a href='${'http://ives-games.ru/recovery?hash='+hash}' class="es-button" target="_blank" style="border-radius: 6px; border-left-width: 5px; border-right-width: 5px; text-decoration: none; color: #fff; font-weight: 700; display: block; background: #745ff2; border-color: #745ff2;">CHANGE PASSWORD</a></span></td>
+                                                            <td align="center" class="esd-block-button es-p10t es-p10b"><span class="es-button-border" style="font-family: 'Rubik', sans-serif; color: #414246; border-radius: 6px; padding: 20px; width: 50%; display: block; background: #745ff2;"><a href='${Config.__server.domain+'/recovery?hash='+hash}' class="es-button" target="_blank" style="border-radius: 6px; border-left-width: 5px; border-right-width: 5px; text-decoration: none; color: #fff; font-weight: 700; display: block; background: #745ff2; border-color: #745ff2;">CHANGE PASSWORD</a></span></td>
                                                         </tr>
                                                         <tr>
                                                             <td align="center" class="esd-block-text es-p5t es-p5b es-p40r es-p40l es-m-p0r es-m-p0l">

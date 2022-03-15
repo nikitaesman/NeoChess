@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Game</title>
+    <!-- Favicon -->
+    <link rel="icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    <link rel="shortcut icon" href="../img/icons/favicon.ico" type="image/x-icon">
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500&family=Poppins:wght@100;200;300;400;500;600;700;800;900&family=Syncopate:wght@700&display=swap" rel="stylesheet">
+    <!--  -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Rubik:wght@300;400;700&display=swap" rel="stylesheet">
+    <!-- CSS -->
+    <link rel="stylesheet" type="text/css" href="../css/animate.min.css">
+    <link rel="stylesheet" type="text/css" href="../css/chess.css">
+    <link rel="stylesheet" type="text/css" href="../css/media.css">
+    <!-- JavaScript -->
+    <script type="text/javascript" src="../js/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="../js/replay.js"></script>
+
+</head>
+<body>
+<div id="page-preloader">
+    <div class="lds-roller spinner" ><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+</div>
+<section class="game">
+    <div class="board">
+        <div class="board__row">
+            <div class="board__cell board__cell_white" data-cord="1.1"></div>
+            <div class="board__cell board__cell_black" data-cord="2.1"></div>
+            <div class="board__cell board__cell_white" data-cord="3.1"></div>
+            <div class="board__cell board__cell_black" data-cord="4.1"></div>
+            <div class="board__cell board__cell_white" data-cord="5.1"></div>
+            <div class="board__cell board__cell_black" data-cord="6.1"></div>
+            <div class="board__cell board__cell_white" data-cord="7.1"></div>
+            <div class="board__cell board__cell_black" data-cord="8.1"></div>
+        </div>
+        <div class="board__row">
+            <div class="board__cell board__cell_black" data-cord="1.2"></div>
+            <div class="board__cell board__cell_white" data-cord="2.2"></div>
+            <div class="board__cell board__cell_black" data-cord="3.2"></div>
+            <div class="board__cell board__cell_white" data-cord="4.2"></div>
+            <div class="board__cell board__cell_black" data-cord="5.2"></div>
+            <div class="board__cell board__cell_white" data-cord="6.2"></div>
+            <div class="board__cell board__cell_black" data-cord="7.2"></div>
+            <div class="board__cell board__cell_white" data-cord="8.2"></div>
+        </div>
+        <div class="board__row">
+            <div class="board__cell board__cell_white" data-cord="1.3"></div>
+            <div class="board__cell board__cell_black" data-cord="2.3"></div>
+            <div class="board__cell board__cell_white" data-cord="3.3"></div>
+            <div class="board__cell board__cell_black" data-cord="4.3"></div>
+            <div class="board__cell board__cell_white" data-cord="5.3"></div>
+            <div class="board__cell board__cell_black" data-cord="6.3"></div>
+            <div class="board__cell board__cell_white" data-cord="7.3"></div>
+            <div class="board__cell board__cell_black" data-cord="8.3"></div>
+        </div>
+        <div class="board__row">
+            <div class="board__cell board__cell_black" data-cord="1.4"></div>
+            <div class="board__cell board__cell_white" data-cord="2.4"></div>
+            <div class="board__cell board__cell_black" data-cord="3.4"></div>
+            <div class="board__cell board__cell_white" data-cord="4.4"></div>
+            <div class="board__cell board__cell_black" data-cord="5.4"></div>
+            <div class="board__cell board__cell_white" data-cord="6.4"></div>
+            <div class="board__cell board__cell_black" data-cord="7.4"></div>
+            <div class="board__cell board__cell_white" data-cord="8.4"></div>
+        </div>
+        <div class="board__row">
+            <div class="board__cell board__cell_white" data-cord="1.5"></div>
+            <div class="board__cell board__cell_black" data-cord="2.5"></div>
+            <div class="board__cell board__cell_white" data-cord="3.5"></div>
+            <div class="board__cell board__cell_black" data-cord="4.5"></div>
+            <div class="board__cell board__cell_white" data-cord="5.5"></div>
+            <div class="board__cell board__cell_black" data-cord="6.5"></div>
+            <div class="board__cell board__cell_white" data-cord="7.5"></div>
+            <div class="board__cell board__cell_black" data-cord="8.5"></div>
+        </div>
+        <div class="board__row">
+            <div class="board__cell board__cell_black" data-cord="1.6"></div>
+            <div class="board__cell board__cell_white" data-cord="2.6"></div>
+            <div class="board__cell board__cell_black" data-cord="3.6"></div>
+            <div class="board__cell board__cell_white" data-cord="4.6"></div>
+            <div class="board__cell board__cell_black" data-cord="5.6"></div>
+            <div class="board__cell board__cell_white" data-cord="6.6"></div>
+            <div class="board__cell board__cell_black" data-cord="7.6"></div>
+            <div class="board__cell board__cell_white" data-cord="8.6"></div>
+        </div>
+        <div class="board__row">
+            <div class="board__cell board__cell_white" data-cord="1.7"></div>
+            <div class="board__cell board__cell_black" data-cord="2.7"></div>
+            <div class="board__cell board__cell_white" data-cord="3.7"></div>
+            <div class="board__cell board__cell_black" data-cord="4.7"></div>
+            <div class="board__cell board__cell_white" data-cord="5.7"></div>
+            <div class="board__cell board__cell_black" data-cord="6.7"></div>
+            <div class="board__cell board__cell_white" data-cord="7.7"></div>
+            <div class="board__cell board__cell_black" data-cord="8.7"></div>
+        </div>
+        <div class="board__row">
+            <div class="board__cell board__cell_black" data-cord="1.8"></div>
+            <div class="board__cell board__cell_white" data-cord="2.8"></div>
+            <div class="board__cell board__cell_black" data-cord="3.8"></div>
+            <div class="board__cell board__cell_white" data-cord="4.8"></div>
+            <div class="board__cell board__cell_black" data-cord="5.8"></div>
+            <div class="board__cell board__cell_white" data-cord="6.8"></div>
+            <div class="board__cell board__cell_black" data-cord="7.8"></div>
+            <div class="board__cell board__cell_white" data-cord="8.8"></div>
+        </div>
+        <div class="figures">
+
+        </div>
+    </div>
+</section>

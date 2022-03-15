@@ -1567,27 +1567,19 @@ html {
 	align-items: center;
 	margin: 0px auto ;
 	padding: 10px 10px 15px 0px;
-	border-bottom: 2px solid #808b9f70; 
+	border-bottom: 2px solid #808b9f70;
+
 }
 
 .nav__login {
 	display: flex;
 	flex-direction: column;
-	font-weight: 700;
 	justify-content: center;
 	align-items: center;
-	letter-spacing: 0em;
-	background-color: #513FBF;
-	text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
-	color: transparent;
- 	-webkit-background-clip: text;
-    -moz-background-clip: text;
-    background-clip: text;
-
-    box-shadow: -1px -1px 3px #FFFFFF,
-				1.5px 1.5px 3px rgba(174, 174, 192, 0.7),
-				inset -1px -1px 1px rgba(255, 255, 255, 0.7),
-				inset 1px 1px 2px rgba(174, 174, 192, 0.2);
+	box-shadow: -1px -1px 3px #FFFFFF,
+	1.5px 1.5px 3px rgba(174, 174, 192, 0.7),
+	inset -1px -1px 1px rgba(255, 255, 255, 0.7),
+	inset 1px 1px 2px rgba(174, 174, 192, 0.2);
 	padding: 10px 13px;
 	border: 2px solid #EBEEF6;
 	border-radius: 27px;
@@ -1607,6 +1599,18 @@ html {
 	transition: all .5s ease;
 	font-size: 17px;
 	width: 80px;
+}
+
+.nav__login-text {
+	letter-spacing: 0em;
+	background-color: #513FBF;
+	text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
+	color: transparent;
+	-webkit-background-clip: text;
+	-moz-background-clip: text;
+	background-clip: text;
+	font-weight: 700;
+	margin: 0;
 }
 
 .user {
@@ -1679,8 +1683,6 @@ html {
 	display: flex;
 	flex-direction: column;
 	font-weight: 700;
-	color: #fff;
-	display: flex;
 	justify-content: center;
 	align-items: center;
 	letter-spacing: 0em;
@@ -1690,6 +1692,7 @@ html {
  	-webkit-background-clip: text;
     -moz-background-clip: text;
     background-clip: text;
+	cursor: pointer;
 }
 
 
@@ -1724,8 +1727,7 @@ html {
 	color: #DE6161;
 }
 
-.game-name {
-	display: flex;
+.game-name__text {
 	font-weight: 700;
 	font-size: 50px;
 	background-color: #745FF2;
@@ -1734,9 +1736,10 @@ html {
   -webkit-background-clip: text;
      -moz-background-clip: text;
           background-clip: text;
+	margin: 0;
 }
 
-.game-name span {
+.game-name__text span {
 	background-color: #C590EF;
 	text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
 	color: transparent;
@@ -1745,7 +1748,7 @@ html {
           background-clip: text;
 }
 
-.game-name i {
+.game-name__text i {
 	background-color: #34258C90;
 	text-shadow: 0px 2px 2px rgba(255,255,255,0.5);
 	color: transparent;
@@ -1874,7 +1877,9 @@ html {
 }
 
 .start__btn {
-
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 	background: #F2F5FA;
 	padding: 50px 90px;
     border-radius: 15px;
@@ -2323,6 +2328,18 @@ html {
 
 .wrap__mode svg {
 	height: 17px;
+}
+
+.wrap__replay {
+	position: absolute;
+	top: 30px;
+	right: 15px;
+	display: flex;
+}
+
+.wrap__replay img {
+	display: block;
+	height: 25px;
 }
 
 
